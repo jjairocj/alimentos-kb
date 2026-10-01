@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Destrucción Térmica de Microorganismos (D, z, F0)</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-border: #334155;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #ef4444;
+    --safe: #10b981;
+    --accent: #38bdf8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; font-size: 15px; }
+  .container { max-width: 980px; margin: 0 auto; }
+  
+  .header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .header-badge {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .header h1 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .header p { color: var(--text-muted); font-size: 0.95rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  }
+  .panel-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: #cbd5e1; }
+  .slider-val { color: var(--accent); font-weight: 700; font-size: 1rem; }
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+  select {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  /* MONITOR DE SEGURIDAD */
+  .status-banner {
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border: 2px solid transparent;
+  }
+  .status-danger { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #fca5a5; }
+  .status-safe { background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #6ee7b7; }
+
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .stat-card {
+    background: #090d16;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .stat-card .val { font-size: 1.4rem; font-weight: 800; color: #38bdf8; }
+  .stat-card .lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; }
+
+  /* GRÁFICA LOGARÍTMICA SVG */
+  .chart-container {
+    background: #090d16;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+  }
+  .svg-plot { width: 100%; height: 200px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <span class="header-badge">Procesamiento Térmico y Seguridad · M17 & M18</span>
+    <h1>Simulador de Destrucción Térmica (D, z, F0)</h1>
+    <p>Simulación matemática en tiempo real de la letalidad de autoclaves y pasteurizadores frente a bacterias patógenas y esporas termorresistentes.</p>
+  </div>
+
+  <div class="grid">
+    <!-- PANEL DE CONTROL -->
+    <div class="panel">
+      <div class="panel-title">Parámetros del Proceso Térmico</div>
+
+      <div class="form-group">
+        <label>Microorganismo Blanco</label>
+        <select id="microbe-select" onchange="updateMicrobe()">
+          <option value="botulinum" selected>Clostridium botulinum (Esporas) — D121 = 0.21 min, z = 10 °C</option>
+          <option value="stearo">Bacillus stearothermophilus (Esporas alterantes) — D121 = 4.0 min, z = 10 °C</option>
+          <option value="salmonella">Salmonella enterica (Vegetativa) — D65 = 0.20 min, z = 5 °C</option>
+          <option value="listeria">Listeria monocytogenes (Vegetativa) — D70 = 0.25 min, z = 7 °C</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Temperatura de Esterilización/Cocción</span>
+          <span class="slider-val" id="temp-disp">121.1 °C</span>
+        </label>
+        <input type="range" id="temp-slider" min="100" max="135" step="0.5" value="121.1" oninput="simulate()">
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Tiempo de Mantenimiento</span>
+          <span class="slider-val" id="time-disp">3.0 min</span>
+        </label>
+        <input type="range" id="time-slider" min="0.1" max="15" step="0.1" value="3.0" oninput="simulate()">
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Carga Inicial de Esporas (N0)</span>
+          <span class="slider-val" id="n0-disp">1.000.000 (10⁶)</span>
+        </label>
+        <input type="range" id="n0-slider" min="3" max="8" step="1" value="6" oninput="simulate()">
+      </div>
+    </div>
+
+    <!-- PANEL DE RESULTADOS Y GRÁFICA -->
+    <div class="panel">
+      <div class="panel-title">Diagnóstico de Esterilidad y Letalidad</div>
+
+      <div class="status-banner" id="status-banner">
+        <!-- Renderizado dinámico de estado seguro / peligroso -->
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="val" id="d-val">0.21 min</div>
+          <div class="lbl">Valor D a T actual</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="cycles-val">14.3 D</div>
+          <div class="lbl">Reducciones Logarítmicas</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="f0-val">3.00 min</div>
+          <div class="lbl">Letalidad F0 equivalente</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="surv-val">&lt; 10⁻⁸</div>
+          <div class="lbl">Supervivencia Final</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div style="font-size:0.78rem; font-weight:700; color:var(--text-muted); margin-bottom:6px;">Curva de Inactivación Semilogarítmica:</div>
+        <svg class="svg-plot" id="plot-svg" viewBox="0 0 300 150">
+          <!-- Ejes y curvas generadas dinámicamente -->
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let microbe = {
+    name: 'Clostridium botulinum',
+    dRef: 0.21,
+    tRef: 121.1,
+    z: 10.0,
+    targetReduction: 12 // Botulinum cook 12D
+  };
+
+  function updateMicrobe() {
+    const val = document.getElementById('microbe-select').value;
+    const tempSlider = document.getElementById('temp-slider');
+    if (val === 'botulinum') {
+      microbe = { name: 'C. botulinum', dRef: 0.21, tRef: 121.1, z: 10.0, targetReduction: 12 };
+      tempSlider.min = 100; tempSlider.max = 135; tempSlider.value = 121.1;
+    } else if (val === 'stearo') {
+      microbe = { name: 'B. stearothermophilus', dRef: 4.0, tRef: 121.1, z: 10.0, targetReduction: 5 };
+      tempSlider.min = 100; tempSlider.max = 135; tempSlider.value = 121.1;
+    } else if (val === 'salmonella') {
+      microbe = { name: 'Salmonella enterica', dRef: 0.20, tRef: 65.0, z: 5.0, targetReduction: 7 };
+      tempSlider.min = 55; tempSlider.max = 85; tempSlider.value = 65.0;
+    } else if (val === 'listeria') {
+      microbe = { name: 'Listeria monocytogenes', dRef: 0.25, tRef: 70.0, z: 7.0, targetReduction: 6 };
+      tempSlider.min = 60; tempSlider.max = 90; tempSlider.value = 70.0;
+    }
+    simulate();
+  }
+
+  function simulate() {
+    const T = parseFloat(document.getElementById('temp-slider').value);
+    const t = parseFloat(document.getElementById('time-slider').value);
+    const n0Exp = parseInt(document.getElementById('n0-slider').value);
+
+    document.getElementById('temp-disp').innerText = `${T.toFixed(1)} °C`;
+    document.getElementById('time-disp').innerText = `${t.toFixed(1)} min`;
+    document.getElementById('n0-disp').innerText = `10^${n0Exp} (${Math.pow(10, n0Exp).toLocaleString('es')} células/esporas)`;
+
+    // Cálculo D(T)
+    // D(T) = D_ref * 10^((T_ref - T) / z)
+    const D_T = microbe.dRef * Math.pow(10, (microbe.tRef - T) / microbe.z);
+    
+    // Reducciones logarítmicas L = t / D_T
+    const reductions = t / D_T;
+
+    // F0 = t * 10^((T - 121.1) / z)
+    const F0 = t * Math.pow(10, (T - 121.1) / microbe.z);
+
+    // Carga final log N = log N0 - L
+    const logFinal = n0Exp - reductions;
+
+    document.getElementById('d-val').innerText = D_T < 0.01 ? `${(D_T*60).toFixed(1)} s` : `${D_T.toFixed(2)} min`;
+    document.getElementById('cycles-val').innerText = `${reductions.toFixed(1)} D`;
+    document.getElementById('f0-val').innerText = `${F0.toFixed(2)} min`;
+    
+    if (logFinal <= -6) {
+      document.getElementById('surv-val').innerText = '< 1 en 10⁶';
+    } else if (logFinal <= 0) {
+      document.getElementById('surv-val').innerText = `10^${logFinal.toFixed(1)}`;
+    } else {
+      document.getElementById('surv-val').innerText = Math.round(Math.pow(10, logFinal)).toLocaleString('es');
+    }
+
+    // Banner de estado
+    const banner = document.getElementById('status-banner');
+    if (reductions >= microbe.targetReduction) {
+      banner.className = 'status-banner status-safe';
+      banner.innerHTML = `✅ PROCESO SEGURO Y ESTÉRIL (${reductions.toFixed(1)} D alcanzadas vs ${microbe.targetReduction} D requeridas)`;
+    } else {
+      banner.className = 'status-banner status-danger';
+      banner.innerHTML = `⚠️ RIESGO BIOLÓGICO: INSUFICIENTE (Solo ${reductions.toFixed(1)} D alcanzadas de ${microbe.targetReduction} D requeridas)`;
+    }
+
+    // Dibujar gráfica semilogarítmica SVG
+    const svg = document.getElementById('plot-svg');
+    const w = 300, h = 150;
+    const padding = 30;
+    const pw = w - padding * 2;
+    const ph = h - padding * 2;
+
+    // Ejes: X = 0 a 15 min, Y = 8 a -6 log
+    const xMax = 15;
+    const yMax = 8;
+    const yMin = -6;
+
+    const xPos = (time) => padding + (time / xMax) * pw;
+    const yPos = (logN) => padding + ((yMax - logN) / (yMax - yMin)) * ph;
+
+    const endLog = Math.max(yMin, n0Exp - (xMax / D_T));
+    const targetY = yPos(n0Exp - microbe.targetReduction);
+
+    svg.innerHTML = `
+      <!-- Rejilla y línea límite -->
+      <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${h-padding}" stroke="#334155" stroke-width="1.5"/>
+      <line x1="${padding}" y1="${h-padding}" x2="${w-padding}" y2="${h-padding}" stroke="#334155" stroke-width="1.5"/>
+      <line x1="${padding}" y1="${targetY}" x2="${w-padding}" y2="${targetY}" stroke="#ef4444" stroke-dasharray="4" stroke-width="1.5"/>
+      <text x="${w-padding}" y="${targetY - 4}" fill="#ef4444" font-size="8" text-anchor="end">Umbral ${microbe.targetReduction}D</text>
+
+      <!-- Curva de decaimiento -->
+      <line x1="${xPos(0)}" y1="${yPos(n0Exp)}" x2="${xPos(xMax)}" y2="${yPos(endLog)}" stroke="#38bdf8" stroke-width="3"/>
+
+      <!-- Punto actual -->
+      <circle cx="${xPos(t)}" cy="${yPos(Math.max(yMin, logFinal))}" r="5" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+
+      <!-- Etiquetas -->
+      <text x="${padding}" y="${h-10}" fill="#94a3b8" font-size="9">0 min</text>
+      <text x="${w-padding}" y="${h-10}" fill="#94a3b8" font-size="9" text-anchor="end">15 min</text>
+      <text x="10" y="${yPos(n0Exp)}" fill="#94a3b8" font-size="8">10^${n0Exp}</text>
+    `;
+  }
+
+  simulate();
+</script>
+</body>
+</html>

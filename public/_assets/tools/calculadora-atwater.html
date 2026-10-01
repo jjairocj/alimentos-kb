@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Energía de Atwater y Densidad Calórica</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-border: #334155;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #3b82f6;
+    --prot: #3b82f6;
+    --carb: #f59e0b;
+    --fat: #ef4444;
+    --fib: #10b981;
+    --poly: #8b5cf6;
+    --alc: #ec4899;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; font-size: 15px; }
+  .container { max-width: 980px; margin: 0 auto; }
+  
+  .header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .header-badge {
+    display: inline-block;
+    background: #4f46e5;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .header h1 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .header p { color: var(--text-muted); font-size: 0.95rem; }
+
+  .presets-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+  }
+  .presets-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-right: 6px; }
+  .preset-btn {
+    background: #334155;
+    border: none;
+    color: #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .preset-btn:hover { background: var(--primary); color: white; transform: translateY(-1px); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  }
+  .panel-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #cbd5e1; }
+  .form-group label span.factor { color: var(--text-muted); font-weight: normal; font-size: 0.78rem; }
+  .input-row { display: flex; align-items: center; gap: 10px; }
+  input[type="number"] {
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input[type="number"]:focus { border-color: var(--primary); }
+  .unit { color: var(--text-muted); font-size: 0.85rem; min-width: 30px; }
+
+  /* RESULTADOS GRANDES */
+  .energy-hero {
+    background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .energy-val { font-size: 2.8rem; font-weight: 900; color: #38bdf8; line-height: 1; }
+  .energy-unit { font-size: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; margin-left: 4px; }
+  .energy-sub { font-size: 0.9rem; color: #cbd5e1; margin-top: 6px; }
+
+  /* MEDIDOR DENSIDAD */
+  .density-card {
+    background: #090d16;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .density-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  .density-bar-bg { height: 12px; background: #334155; border-radius: 6px; overflow: hidden; position: relative; }
+  .density-bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s, background 0.3s; }
+  .density-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; text-align: right; }
+
+  /* DONUT CHART */
+  .chart-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .donut-svg { width: 140px; height: 140px; transform: rotate(-90deg); border-radius: 50%; }
+  .chart-legend { display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <span class="header-badge">Química y Fisiología Nutricional · M01 & M05</span>
+    <h1>Calculadora de Energía de Atwater y Densidad Calórica</h1>
+    <p>Cálculo del valor energético metabolizable real y porcentaje calórico según los factores clásicos de Atwater corregidos por la FAO/OMS.</p>
+  </div>
+
+  <div class="presets-bar">
+    <span class="presets-label">Alimentos tipo (por 100 g):</span>
+    <button class="preset-btn" onclick="loadPreset('aguacate')">🥑 Aguacate Hass</button>
+    <button class="preset-btn" onclick="loadPreset('pollo')">🍗 Pechuga de Pollo</button>
+    <button class="preset-btn" onclick="loadPreset('chocolate')">🍫 Chocolate Negro 85%</button>
+    <button class="preset-btn" onclick="loadPreset('manzana')">🍎 Manzana fresca</button>
+    <button class="preset-btn" onclick="loadPreset('cerveza')">🍺 Cerveza rubia 5%</button>
+    <button class="preset-btn" onclick="loadPreset('barra')">🏋️ Barra de proteína</button>
+  </div>
+
+  <div class="grid">
+    <!-- PANEL DE ENTRADA -->
+    <div class="panel">
+      <div class="panel-title">
+        <span>Gramos por Porción (ej. 100 g)</span>
+        <button style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:0.8rem;" onclick="resetForm()">↺ Limpiar</button>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Carbohidratos Disponibles (Almidón + Azúcares)</span>
+          <span class="factor">4.0 kcal/g</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-carb" value="12" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Proteínas</span>
+          <span class="factor">4.0 kcal/g</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-prot" value="3.5" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Grasas Totales</span>
+          <span class="factor">9.0 kcal/g</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-fat" value="15" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Fibra Dietética</span>
+          <span class="factor">2.0 kcal/g (AGCC en colon)</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-fib" value="7" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Polioles / Polialcoholes (Maltitol, Xilitol, etc.)</span>
+          <span class="factor">2.4 kcal/g prom.</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-poly" value="0" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Alcohol (Etanol)</span>
+          <span class="factor">7.0 kcal/g</span>
+        </label>
+        <div class="input-row">
+          <input type="number" id="in-alc" value="0" step="0.1" min="0" oninput="calculate()">
+          <span class="unit">g</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL DE RESULTADOS -->
+    <div class="panel">
+      <div class="panel-title">
+        <span>Energía y Distribución Calórica</span>
+      </div>
+
+      <div class="energy-hero">
+        <div>
+          <span class="energy-val" id="total-kcal">0</span>
+          <span class="energy-unit">kcal</span>
+        </div>
+        <div class="energy-sub" id="total-kj">0 kJ de energía metabolizable</div>
+      </div>
+
+      <!-- MEDIDOR DE DENSIDAD ENERGÉTICA -->
+      <div class="density-card">
+        <div class="density-header">
+          <span>Densidad Energética del Alimento</span>
+          <span id="density-val" style="color:#38bdf8;">0.00 kcal/g</span>
+        </div>
+        <div class="density-bar-bg">
+          <div class="density-bar-fill" id="density-fill" style="width: 0%; background: #10b981;"></div>
+        </div>
+        <div class="density-desc" id="density-cat">Clasificación: Muy baja densidad</div>
+      </div>
+
+      <!-- GRÁFICA DONUT SVG -->
+      <div class="chart-box">
+        <svg class="donut-svg" viewBox="0 0 42 42">
+          <circle cx="21" cy="21" r="15.91549430918954" fill="#0f172a" stroke="#334155" stroke-width="6"></circle>
+          <circle id="seg-fat" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--fat)" stroke-width="6" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+          <circle id="seg-carb" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--carb)" stroke-width="6" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+          <circle id="seg-prot" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--prot)" stroke-width="6" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+          <circle id="seg-fib" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--fib)" stroke-width="6" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+          <circle id="seg-alc" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="var(--alc)" stroke-width="6" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+        </svg>
+        <div class="chart-legend" id="legend-box">
+          <!-- Leyenda con porcentajes -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculate() {
+    const carb = parseFloat(document.getElementById('in-carb').value) || 0;
+    const prot = parseFloat(document.getElementById('in-prot').value) || 0;
+    const fat = parseFloat(document.getElementById('in-fat').value) || 0;
+    const fib = parseFloat(document.getElementById('in-fib').value) || 0;
+    const poly = parseFloat(document.getElementById('in-poly').value) || 0;
+    const alc = parseFloat(document.getElementById('in-alc').value) || 0;
+
+    const carbKcal = carb * 4.0;
+    const protKcal = prot * 4.0;
+    const fatKcal = fat * 9.0;
+    const fibKcal = fib * 2.0;
+    const polyKcal = poly * 2.4;
+    const alcKcal = alc * 7.0;
+
+    const totalKcal = carbKcal + protKcal + fatKcal + fibKcal + polyKcal + alcKcal;
+    const totalGrams = carb + prot + fat + fib + poly + alc;
+
+    document.getElementById('total-kcal').innerText = Math.round(totalKcal);
+    document.getElementById('total-kj').innerText = `${Math.round(totalKcal * 4.184)} kJ de energía metabolizable`;
+
+    // Densidad energética (asumiendo 100g base si no supera)
+    const baseWeight = Math.max(100, totalGrams);
+    const density = totalKcal / baseWeight;
+    document.getElementById('density-val').innerText = `${density.toFixed(2)} kcal/g (${Math.round(density * 100)} kcal/100g)`;
+
+    // Barra de densidad (0 a 9 kcal/g máx grasa pura)
+    const fillPct = Math.min(100, (density / 6.0) * 100);
+    const fillEl = document.getElementById('density-fill');
+    fillEl.style.width = `${fillPct}%`;
+    const catEl = document.getElementById('density-cat');
+
+    if (density < 0.6) {
+      fillEl.style.background = '#10b981';
+      catEl.innerText = 'Clasificación: Muy baja densidad calórica (Vegetales acuosos, caldos)';
+    } else if (density < 1.5) {
+      fillEl.style.background = '#3b82f6';
+      catEl.innerText = 'Clasificación: Baja densidad calórica (Frutas frescas, legumbres cocidas)';
+    } else if (density < 4.0) {
+      fillEl.style.background = '#f59e0b';
+      catEl.innerText = 'Clasificación: Densidad calórica media (Carnes, pan, huevos, arroz)';
+    } else {
+      fillEl.style.background = '#ef4444';
+      catEl.innerText = 'Clasificación: Alta densidad calórica (Aceites, frutos secos, chocolate, papas fritas)';
+    }
+
+    // Porcentajes Donut Chart
+    const pFat = totalKcal > 0 ? (fatKcal / totalKcal) * 100 : 0;
+    const pCarb = totalKcal > 0 ? (carbKcal / totalKcal) * 100 : 0;
+    const pProt = totalKcal > 0 ? (protKcal / totalKcal) * 100 : 0;
+    const pFib = totalKcal > 0 ? (fibKcal / totalKcal) * 100 : 0;
+    const pAlc = totalKcal > 0 ? ((alcKcal + polyKcal) / totalKcal) * 100 : 0;
+
+    let offset = 0;
+    function setSegment(id, pct) {
+      const el = document.getElementById(id);
+      el.setAttribute('stroke-dasharray', `${pct} ${100 - pct}`);
+      el.setAttribute('stroke-dashoffset', `${-offset}`);
+      offset += pct;
+    }
+
+    offset = 0;
+    setSegment('seg-fat', pFat);
+    setSegment('seg-carb', pCarb);
+    setSegment('seg-prot', pProt);
+    setSegment('seg-fib', pFib);
+    setSegment('seg-alc', pAlc);
+
+    document.getElementById('legend-box').innerHTML = `
+      <div class="legend-item"><div class="legend-dot" style="background:var(--fat);"></div><span>Grasas: <strong>${pFat.toFixed(1)}%</strong> (${fatKcal.toFixed(0)} kcal)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--carb);"></div><span>Carbohidratos: <strong>${pCarb.toFixed(1)}%</strong> (${carbKcal.toFixed(0)} kcal)</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--prot);"></div><span>Proteínas: <strong>${pProt.toFixed(1)}%</strong> (${protKcal.toFixed(0)} kcal)</span></div>
+      ${pFib > 0 ? `<div class="legend-item"><div class="legend-dot" style="background:var(--fib);"></div><span>Fibra: <strong>${pFib.toFixed(1)}%</strong> (${fibKcal.toFixed(0)} kcal)</span></div>` : ''}
+      ${pAlc > 0 ? `<div class="legend-item"><div class="legend-dot" style="background:var(--alc);"></div><span>Alcohol/Polioles: <strong>${pAlc.toFixed(1)}%</strong> (${(alcKcal+polyKcal).toFixed(0)} kcal)</span></div>` : ''}
+    `;
+  }
+
+  function loadPreset(key) {
+    if (key === 'aguacate') {
+      document.getElementById('in-carb').value = 1.8;
+      document.getElementById('in-prot').value = 2.0;
+      document.getElementById('in-fat').value = 14.7;
+      document.getElementById('in-fib').value = 6.7;
+      document.getElementById('in-poly').value = 0;
+      document.getElementById('in-alc').value = 0;
+    } else if (key === 'pollo') {
+      document.getElementById('in-carb').value = 0;
+      document.getElementById('in-prot').value = 31.0;
+      document.getElementById('in-fat').value = 3.6;
+      document.getElementById('in-fib').value = 0;
+      document.getElementById('in-poly').value = 0;
+      document.getElementById('in-alc').value = 0;
+    } else if (key === 'chocolate') {
+      document.getElementById('in-carb').value = 19.5;
+      document.getElementById('in-prot').value = 11.0;
+      document.getElementById('in-fat').value = 52.0;
+      document.getElementById('in-fib').value = 12.0;
+      document.getElementById('in-poly').value = 0;
+      document.getElementById('in-alc').value = 0;
+    } else if (key === 'manzana') {
+      document.getElementById('in-carb').value = 11.4;
+      document.getElementById('in-prot').value = 0.3;
+      document.getElementById('in-fat').value = 0.2;
+      document.getElementById('in-fib').value = 2.4;
+      document.getElementById('in-poly').value = 0;
+      document.getElementById('in-alc').value = 0;
+    } else if (key === 'cerveza') {
+      document.getElementById('in-carb').value = 3.6;
+      document.getElementById('in-prot').value = 0.5;
+      document.getElementById('in-fat').value = 0;
+      document.getElementById('in-fib').value = 0;
+      document.getElementById('in-poly').value = 0;
+      document.getElementById('in-alc').value = 4.0;
+    } else if (key === 'barra') {
+      document.getElementById('in-carb').value = 14.0;
+      document.getElementById('in-prot').value = 20.0;
+      document.getElementById('in-fat').value = 6.0;
+      document.getElementById('in-fib').value = 10.0;
+      document.getElementById('in-poly').value = 8.0;
+      document.getElementById('in-alc').value = 0;
+    }
+    calculate();
+  }
+
+  function resetForm() {
+    document.getElementById('in-carb').value = 0;
+    document.getElementById('in-prot').value = 0;
+    document.getElementById('in-fat').value = 0;
+    document.getElementById('in-fib').value = 0;
+    document.getElementById('in-poly').value = 0;
+    document.getElementById('in-alc').value = 0;
+    calculate();
+  }
+
+  calculate();
+</script>
+</body>
+</html>

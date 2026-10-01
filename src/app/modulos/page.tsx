@@ -60,16 +60,20 @@ export default function ModulosPage() {
   const getPhase = (modId: string) => {
     const num = parseInt(modId.replace(/\D/g, ''), 10);
     if (num <= 7) return 1;
-    if (num <= 15) return 2;
-    if (num <= 20) return 3;
-    return 4;
+    if (num <= 13) return 2;
+    if (num <= 19) return 3;
+    if (num <= 23) return 4;
+    if (num <= 26) return 5;
+    return 6;
   };
 
   const phases = [
-    { id: 1, title: 'Fase I: Fundamentos Fisicoquímicos y Celulares', desc: 'Química general, biomoléculas, fisiología celular, agua y dispersiones', range: 'M00 – M07' },
-    { id: 2, title: 'Fase II: Alimentos, Transformación y Microbiología', desc: 'Grupos de alimentos, cinética microbiológica, digestión y bioenergética', range: 'M08 – M15' },
-    { id: 3, title: 'Fase III: Aditivos, Metabolismo y Toxicología', desc: 'Química de aditivos INS, toxicología alimentaria, microbiota y ultraprocesados', range: 'M16 – M20' },
-    { id: 4, title: 'Fase IV: Regulación, Análisis Forense y Mitos', desc: 'Etiquetado Res. 810/2492, verificación de afirmaciones e investigación', range: 'M21 – M23' },
+    { id: 1, title: 'Fase I: Fundamentos Fisicoquímicos y Celulares', desc: 'Química general, biomoléculas, célula, agua y sistemas coloidales', range: 'M00 – M07' },
+    { id: 2, title: 'Fase II: Fisiología, Nutrición y Microbiología', desc: 'Microbiología, digestión, bioenergética, endocrino y macronutrientes', range: 'M08 – M13b' },
+    { id: 3, title: 'Fase III: Procesamiento, Toxicología y Aditivos', desc: 'Transformación industrial, toxicología, aditivos INS, sensorial y ultraprocesados', range: 'M14 – M19' },
+    { id: 4, title: 'Fase IV: Regulación, Evidencia e Investigación', desc: 'Marco regulatorio, etiquetado normativo e investigación de afirmaciones', range: 'M20 – M23' },
+    { id: 5, title: 'Fase V: Ingeniería de Procesos y Fenómenos (Universitario)', desc: 'Balances de materia y energía, reología no newtoniana y transporte de calor/masa', range: 'M24 – M26' },
+    { id: 6, title: 'Fase VI: Operaciones Unitarias, AOAC y GFSI (Universitario)', desc: 'UHT, evaporación, secado, membranas, HPLC/GC-MS, microbiología predictiva y HACCP', range: 'M27 – M33' },
   ];
 
   const filtered = modulesData.filter(mod => {
@@ -88,7 +92,7 @@ export default function ModulosPage() {
       <div className="mb-10 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-3">
           <GraduationCap className="w-3.5 h-3.5" />
-          Ruta Curricular para Adultos · 26 Módulos Troncales
+          Ruta Curricular para Adultos · 36 Módulos (Ciclo Tecnólogo y Universitario)
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
           Programa Troncal de <span className="text-[var(--accent-primary)]">Ciencia de Alimentos</span>

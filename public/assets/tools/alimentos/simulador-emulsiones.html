@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Microestructura de Emulsiones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f1d;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --accent: #38bdf8;
+      --warning: #f59e0b;
+      --danger: #f43f5e;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .widget-container {
+      max-width: 900px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .widget-header {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .widget-header h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .widget-header p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+    .modes-bar {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .mode-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .mode-btn:hover { background: rgba(255, 255, 255, 0.12); }
+    .mode-btn.active {
+      background: var(--primary);
+      color: #042f2e;
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+    .canvas-card {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      width: 100%;
+      height: 380px;
+      display: block;
+    }
+    .status-overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+    .controls-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .control-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .control-group span.val {
+      float: right;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .explanation-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-left: 3px solid var(--primary);
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: #cbd5e1;
+    }
+    .legend {
+      display: flex;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .dot-oil { background: #eab308; }
+    .dot-head { background: #10b981; }
+    .dot-water { background: #0284c7; }
+  </style>
+</head>
+<body>
+  <div class="widget-container">
+    <div class="widget-header">
+      <h2>🔬 Simulador Dinámico de Estabilidad de Emulsiones</h2>
+      <p>Visualiza en tiempo real las fuerzas coloidales, la barrera del emulsionante y las 3 vías de inestabilidad.</p>
+    </div>
+
+    <div class="modes-bar">
+      <button class="mode-btn active" data-mode="stable">1. Emulsión Estable (O/W)</button>
+      <button class="mode-btn" data-mode="creaming">2. Cremado (Ley de Stokes)</button>
+      <button class="mode-btn" data-mode="flocculation">3. Floculación</button>
+      <button class="mode-btn" data-mode="coalescence">4. Coalescencia (Corte)</button>
+    </div>
+
+    <div class="main-grid">
+      <div class="canvas-card">
+        <canvas id="emulsionCanvas" width="600" height="380"></canvas>
+        <div class="status-overlay" id="statusOverlay">Estado: Emulsión Estable O/W</div>
+      </div>
+
+      <div class="controls-card">
+        <div class="control-group">
+          <label>Concentración Emulsionante (Lecitina): <span class="val" id="valEmuls">85%</span></label>
+          <input type="range" id="sliderEmuls" min="10" max="100" value="85">
+        </div>
+        <div class="control-group">
+          <label>Intensidad de Cizalla (Agitación): <span class="val" id="valShear">Medio</span></label>
+          <input type="range" id="sliderShear" min="1" max="5" value="3">
+        </div>
+
+        <div class="explanation-box" id="explanationText">
+          <strong>Emulsión Estable:</strong> Las gotas lipídicas están blindadas por moléculas anfifílicas. Las cabezas polares cargadas generan repulsión electrostática e impedimento estérico, impidiendo que el aceite se fusione.
+        </div>
+
+        <div class="legend">
+          <span class="legend-item"><span class="dot dot-oil"></span> Gotas de Aceite</span>
+          <span class="legend-item"><span class="dot dot-head"></span> Tensoactivo (Lecitina)</span>
+          <span class="legend-item"><span class="dot dot-water"></span> Fase Acuosa Continua</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('emulsionCanvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width;
+    let H = canvas.height;
+
+    let currentMode = 'stable';
+    let emulsifierConcentration = 0.85;
+    let shearSpeed = 3;
+
+    // Droplets state
+    let droplets = [];
+    const NUM_DROPLETS = 24;
+
+    function initDroplets() {
+      droplets = [];
+      for (let i = 0; i < NUM_DROPLETS; i++) {
+        droplets.push({
+          x: Math.random() * (W - 80) + 40,
+          y: Math.random() * (H - 80) + 40,
+          r: 14 + Math.random() * 12,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2,
+          color: '#eab308'
+        });
+      }
+    }
+    initDroplets();
+
+    // Mode buttons
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const overlay = document.getElementById('statusOverlay');
+    const explanation = document.getElementById('explanationText');
+
+    const descriptions = {
+      stable: "<strong>Emulsión Estable:</strong> Las gotas lipídicas están blindadas por moléculas anfifílicas. Las cabezas polares generan repulsión electrostática e impedimento estérico, impidiendo la fusión.",
+      creaming: "<strong>Cremado (Ley de Stokes):</strong> Debido a que el aceite es menos denso que el agua (ρ_aceite ≈ 0.92 g/cm³), las gotas flotan hacia la superficie. La película interfacial permanece intacta y es reversible por suave agitación.",
+      flocculation: "<strong>Floculación:</strong> Las gotas forman racimos o 'flóculos' atraídas por fuerzas débiles de van der Waals sin fundir sus núcleos. Aumenta la viscosidad aparente antes del cremado rápido.",
+      coalescence: "<strong>Coalescencia Irreversible:</strong> Ruptura catastrófica de la película del emulsionante. Al chocar, las películas interfaciales colapsan y las gotas se funden en macro-gotas gigantescas (mayonesa cortada)."
+    };
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMode = btn.dataset.mode;
+        overlay.textContent = "Estado: " + btn.textContent.split(". ")[1];
+        explanation.innerHTML = descriptions[currentMode];
+        if (currentMode === 'stable') initDroplets();
+      });
+    });
+
+    // Sliders
+    const sliderEmuls = document.getElementById('sliderEmuls');
+    const sliderShear = document.getElementById('sliderShear');
+    const valEmuls = document.getElementById('valEmuls');
+    const valShear = document.getElementById('valShear');
+
+    sliderEmuls.addEventListener('input', (e) => {
+      emulsifierConcentration = e.target.value / 100;
+      valEmuls.textContent = e.target.value + '%';
+    });
+
+    const shearLabels = ['Muy Bajo', 'Bajo', 'Medio', 'Alto', 'Vigoroso'];
+    sliderShear.addEventListener('input', (e) => {
+      shearSpeed = parseInt(e.target.value);
+      valShear.textContent = shearLabels[shearSpeed - 1];
+    });
+
+    // Render Loop
+    function animate() {
+      ctx.fillStyle = '#05192d'; // aqueous continuous phase
+      ctx.fillRect(0, 0, W, H);
+
+      // Water background subtle currents
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+      ctx.lineWidth = 1;
+      for (let y = 30; y < H; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.bezierCurveTo(W * 0.3, y - 8, W * 0.7, y + 8, W, y);
+        ctx.stroke();
+      }
+
+      // Physics based on mode
+      droplets.forEach((d, idx) => {
+        // Browninan / speed
+        const speedMult = (shearSpeed * 0.35);
+
+        if (currentMode === 'stable') {
+          d.x += d.vx * speedMult;
+          d.y += d.vy * speedMult;
+
+          // Wall bounce
+          if (d.x - d.r < 10 || d.x + d.r > W - 10) d.vx *= -1;
+          if (d.y - d.r < 10 || d.y + d.r > H - 10) d.vy *= -1;
+
+          // Droplet-droplet repulsion
+          for (let j = idx + 1; j < droplets.length; j++) {
+            let o = droplets[j];
+            let dx = o.x - d.x;
+            let dy = o.y - d.y;
+            let dist = Math.hypot(dx, dy);
+            let minDist = d.r + o.r + 6;
+            if (dist < minDist && dist > 0) {
+              let overlap = minDist - dist;
+              let nx = dx / dist;
+              let ny = dy / dist;
+              d.x -= nx * overlap * 0.5;
+              d.y -= ny * overlap * 0.5;
+              o.x += nx * overlap * 0.5;
+              o.y += ny * overlap * 0.5;
+            }
+          }
+        } else if (currentMode === 'creaming') {
+          // Buoyancy ascent upwards
+          d.y -= (0.8 + d.r * 0.06);
+          d.x += (Math.random() - 0.5) * 0.8;
+          if (d.y - d.r < 25) {
+            d.y = 25 + d.r;
+          }
+        } else if (currentMode === 'flocculation') {
+          // Cluster into 3 clumps
+          const targets = [
+            { x: W * 0.25, y: H * 0.5 },
+            { x: W * 0.75, y: H * 0.45 },
+            { x: W * 0.5, y: H * 0.65 }
+          ];
+          let target = targets[idx % 3];
+          d.x += (target.x - d.x) * 0.03 + (Math.random() - 0.5) * 0.8;
+          d.y += (target.y - d.y) * 0.03 + (Math.random() - 0.5) * 0.8;
+        } else if (currentMode === 'coalescence') {
+          // Merge droplets when close
+          for (let j = idx + 1; j < droplets.length; j++) {
+            let o = droplets[j];
+            let dist = Math.hypot(o.x - d.x, o.y - d.y);
+            if (dist < (d.r + o.r)) {
+              // Fuse
+              d.r = Math.min(55, Math.sqrt(d.r * d.r + o.r * o.r));
+              droplets.splice(j, 1);
+              break;
+            }
+          }
+          d.x += (Math.random() - 0.5) * 1.2;
+          d.y -= 0.3; // float large oil pools up
+          if (d.y - d.r < 20) d.y = 20 + d.r;
+        }
+
+        // Draw Droplet
+        ctx.fillStyle = '#eab308';
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Droplet gloss
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.beginPath();
+        ctx.arc(d.x - d.r * 0.3, d.y - d.r * 0.3, d.r * 0.35, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw Surfactant (phospholipids) around perimeter
+        if (currentMode !== 'coalescence') {
+          const numTails = Math.floor(d.r * 1.8 * emulsifierConcentration);
+          for (let k = 0; k < numTails; k++) {
+            let angle = (k / numTails) * Math.PI * 2;
+            let headX = d.x + Math.cos(angle) * (d.r + 3);
+            let headY = d.y + Math.sin(angle) * (d.r + 3);
+            let tailX = d.x + Math.cos(angle) * (d.r - 4);
+            let tailY = d.y + Math.sin(angle) * (d.r - 4);
+
+            // Tail inside oil
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(headX, headY);
+            ctx.lineTo(tailX, tailY);
+            ctx.stroke();
+
+            // Polar hydrophilic head facing water
+            ctx.fillStyle = '#10b981';
+            ctx.beginPath();
+            ctx.arc(headX, headY, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>

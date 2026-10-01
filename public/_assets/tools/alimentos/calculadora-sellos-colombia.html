@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Sellos Frontales de Advertencia — Colombia (Res. 2492/2022)</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #131b2e;
+      --card-border: #1e293b;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 24px; min-height: 100vh; }
+    .container { max-width: 980px; margin: 0 auto; }
+    
+    header { margin-bottom: 24px; }
+    .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 8px; }
+    h1 { font-size: 1.6rem; color: #fff; margin-bottom: 6px; }
+    p.subtitle { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+    .card h2 { font-size: 1.15rem; margin-bottom: 16px; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
+
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .preset-btn { background: #1e293b; border: 1px solid #334155; color: #cbd5e1; font-size: 0.78rem; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+    .preset-btn:hover { background: #334155; color: #fff; border-color: #475569; }
+
+    .form-group { margin-bottom: 14px; }
+    label { display: flex; justify-content: space-between; font-size: 0.85rem; color: #e2e8f0; margin-bottom: 5px; font-weight: 500; }
+    label span.hint { color: var(--text-muted); font-size: 0.78rem; font-weight: normal; }
+    
+    .input-wrapper { display: flex; align-items: center; gap: 8px; }
+    input[type="number"], select {
+      flex: 1; background: #0b1120; border: 1px solid #334155; color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 0.95rem; outline: none; transition: border 0.2s;
+    }
+    input[type="number"]:focus, select:focus { border-color: #38bdf8; }
+    .unit { color: #64748b; font-size: 0.85rem; min-width: 40px; }
+
+    .switch-group { display: flex; align-items: center; justify-content: space-between; background: #0b1120; border: 1px solid #334155; padding: 10px 14px; border-radius: 8px; margin-top: 14px; }
+    .switch-label { font-size: 0.85rem; color: #e2e8f0; }
+    input[type="checkbox"] { transform: scale(1.3); cursor: pointer; accent-color: var(--accent); }
+
+    /* SELLOS OCTOGONALES OFICIALES DE COLOMBIA */
+    .seal-preview-box { min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #070a12; border: 1px dashed #334155; border-radius: 12px; padding: 24px; }
+    .seals-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 18px; }
+
+    .octagon {
+      width: 110px; height: 110px; background: #000000; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #ffffff;
+      clip-path: polygon(29.29% 0%, 70.71% 0%, 100% 29.29%, 100% 70.71%, 70.71% 100%, 29.29% 100%, 0% 70.71%, 0% 29.29%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border: 3px solid #ffffff;
+    }
+    .octagon-inner {
+      font-weight: 900; font-size: 0.72rem; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.2px; padding: 4px;
+    }
+    .octagon-sub { font-size: 0.5rem; opacity: 0.85; margin-top: 2px; }
+
+    .rectangle-seal {
+      background: #000000; border: 2.5px solid #ffffff; color: #ffffff; padding: 8px 12px; border-radius: 4px; text-align: center; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; line-height: 1.2; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .rectangle-sub { font-size: 0.55rem; color: #fbbf24; margin-top: 3px; }
+
+    .no-seals-msg { text-align: center; color: #34d399; font-weight: 600; font-size: 0.95rem; }
+    .no-seals-sub { color: #64748b; font-size: 0.8rem; margin-top: 4px; }
+
+    /* TABLA DE EVALUACIÓN NORMATIVA */
+    .eval-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.82rem; }
+    .eval-table th { background: #1e293b; color: #cbd5e1; text-align: left; padding: 8px 10px; border-bottom: 1px solid #334155; }
+    .eval-table td { padding: 8px 10px; border-bottom: 1px solid #1e293b; }
+    .status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+    .status-pass { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .status-excess { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+    .legal-note { margin-top: 20px; font-size: 0.75rem; color: #64748b; border-left: 3px solid #334155; padding-left: 10px; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Normativa Sanitaria · Colombia</span>
+      <h1>Calculadora Oficial de Sellos Frontales de Advertencia</h1>
+      <p class="subtitle">Evaluación de octágonos negros de advertencia según la <strong>Resolución 2492 de 2022</strong> (Ministerio de Salud y Protección Social de Colombia / Modelo OPS).</p>
+    </header>
+
+    <div class="grid">
+      <!-- PANEL DE ENTRADA -->
+      <div class="card">
+        <h2>📝 Datos Nutricionales (por 100g o 100ml)</h2>
+
+        <div class="presets">
+          <button class="preset-btn" onclick="loadPreset('gaseosa')">🥤 Gaseosa cola</button>
+          <button class="preset-btn" onclick="loadPreset('salchichas')">🌭 Salchichas manguera</button>
+          <button class="preset-btn" onclick="loadPreset('papas')">🥔 Papas fritas paquete</button>
+          <button class="preset-btn" onclick="loadPreset('galletas')">🍪 Galletas con crema</button>
+          <button class="preset-btn" onclick="loadPreset('avena')">🥣 Avena en hojuelas pura</button>
+        </div>
+
+        <div class="form-group">
+          <label>Naturaleza del Alimento</label>
+          <select id="foodType" onchange="calculateSeals()">
+            <option value="solid">Alimento Sólido (base 100 g)</option>
+            <option value="liquid">Alimento Líquido / Bebida (base 100 ml)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Energía Total <span class="hint">Calorías por 100g/ml</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="calories" value="450" min="0" step="1" oninput="calculateSeals()">
+            <span class="unit">kcal</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Azúcares Libres o Añadidos <span class="hint">Umbral legal: &ge; 10% energía</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="sugars" value="28" min="0" step="0.1" oninput="calculateSeals()">
+            <span class="unit">g</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Grasas Saturadas <span class="hint">Umbral legal: &ge; 10% energía</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="satFats" value="9" min="0" step="0.1" oninput="calculateSeals()">
+            <span class="unit">g</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Grasas Trans <span class="hint">Umbral legal: &ge; 1% energía</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="transFats" value="0.2" min="0" step="0.05" oninput="calculateSeals()">
+            <span class="unit">g</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Sodio <span class="hint">Sólidos &ge; 300mg · Líquidos &ge; 100mg</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="sodium" value="380" min="0" step="1" oninput="calculateSeals()">
+            <span class="unit">mg</span>
+          </div>
+        </div>
+
+        <div class="switch-group">
+          <span class="switch-label">¿Contiene edulcorantes no calóricos añadidos?</span>
+          <input type="checkbox" id="hasSweeteners" onchange="calculateSeals()">
+        </div>
+      </div>
+
+      <!-- PANEL DE RESULTADOS Y SELLOS -->
+      <div class="card">
+        <h2>🏷️ Sellos Obligatorios en el Empaque</h2>
+
+        <div class="seal-preview-box" id="previewBox">
+          <div class="seals-container" id="sealsContainer">
+            <!-- Sellos generados dinámicamente -->
+          </div>
+          <div id="noSealsPlaceholder" style="display: none;">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">✅</div>
+            <div class="no-seals-msg">PRODUCTO SIN SELLOS FRONTALES</div>
+            <div class="no-seals-sub">Cumple los límites máximos permitidos por la Resolución 2492/2022.</div>
+          </div>
+        </div>
+
+        <h3 style="font-size: 0.95rem; margin-top: 18px; color: #94a3b8;">Desglose Numérico Frente a Umbrales Normativos:</h3>
+        <table class="eval-table">
+          <thead>
+            <tr>
+              <th>Parámetro</th>
+              <th>Valor Calculado</th>
+              <th>Límite Máximo</th>
+              <th>Dictamen</th>
+            </tr>
+          </thead>
+          <tbody id="evalTableBody">
+            <!-- Renglones de auditoría -->
+          </tbody>
+        </table>
+
+        <div class="legal-note">
+          <strong>Marco Regulatorio:</strong> Resolución 2492 de diciembre de 2022 por la cual se modifica la Res. 810 de 2021. Aplica a alimentos nacionales e importados comercializados en la República de Colombia.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const presets = {
+      gaseosa: { type: 'liquid', kcal: 42, sugars: 10.5, satFats: 0, transFats: 0, sodium: 12, sweeteners: false },
+      salchichas: { type: 'solid', kcal: 240, sugars: 1.5, satFats: 7.2, transFats: 0.1, sodium: 850, sweeteners: false },
+      papas: { type: 'solid', kcal: 535, sugars: 0.5, satFats: 11.0, transFats: 0.2, sodium: 580, sweeteners: false },
+      galletas: { type: 'solid', kcal: 480, sugars: 34.0, satFats: 8.5, transFats: 0.1, sodium: 280, sweeteners: false },
+      avena: { type: 'solid', kcal: 375, sugars: 1.0, satFats: 1.2, transFats: 0, sodium: 5, sweeteners: false }
+    };
+
+    function loadPreset(key) {
+      const p = presets[key];
+      if (!p) return;
+      document.getElementById('foodType').value = p.type;
+      document.getElementById('calories').value = p.kcal;
+      document.getElementById('sugars').value = p.sugars;
+      document.getElementById('satFats').value = p.satFats;
+      document.getElementById('transFats').value = p.transFats;
+      document.getElementById('sodium').value = p.sodium;
+      document.getElementById('hasSweeteners').checked = p.sweeteners;
+      calculateSeals();
+    }
+
+    function calculateSeals() {
+      const foodType = document.getElementById('foodType').value;
+      const kcal = parseFloat(document.getElementById('calories').value) || 0;
+      const sugars = parseFloat(document.getElementById('sugars').value) || 0;
+      const satFats = parseFloat(document.getElementById('satFats').value) || 0;
+      const transFats = parseFloat(document.getElementById('transFats').value) || 0;
+      const sodium = parseFloat(document.getElementById('sodium').value) || 0;
+      const hasSweeteners = document.getElementById('hasSweeteners').checked;
+
+      const sealsContainer = document.getElementById('sealsContainer');
+      const placeholder = document.getElementById('noSealsPlaceholder');
+      const tbody = document.getElementById('evalTableBody');
+
+      sealsContainer.innerHTML = '';
+      tbody.innerHTML = '';
+
+      let sealsCount = 0;
+
+      // 1. Azúcares: >= 10% energía (1g azúcar = 4 kcal)
+      const sugarKcal = sugars * 4;
+      const sugarPct = kcal > 0 ? (sugarKcal / kcal) * 100 : 0;
+      const excessSugars = sugarPct >= 10;
+      if (excessSugars) {
+        addOctagon('EXCESO EN<br>AZÚCARES', 'MINSALUD');
+        sealsCount++;
+      }
+      addRow(tbody, 'Azúcares libres', `${sugarPct.toFixed(1)}% de kcal`, '< 10% de kcal', excessSugars);
+
+      // 2. Grasas saturadas: >= 10% energía (1g grasa = 9 kcal)
+      const satFatKcal = satFats * 9;
+      const satFatPct = kcal > 0 ? (satFatKcal / kcal) * 100 : 0;
+      const excessSatFats = satFatPct >= 10;
+      if (excessSatFats) {
+        addOctagon('EXCESO EN<br>GRASAS<br>SATURADAS', 'MINSALUD');
+        sealsCount++;
+      }
+      addRow(tbody, 'Grasas saturadas', `${satFatPct.toFixed(1)}% de kcal`, '< 10% de kcal', excessSatFats);
+
+      // 3. Grasas trans: >= 1% energía (1g grasa trans = 9 kcal)
+      const transFatKcal = transFats * 9;
+      const transFatPct = kcal > 0 ? (transFatKcal / kcal) * 100 : 0;
+      const excessTrans = transFatPct >= 1.0;
+      if (excessTrans) {
+        addOctagon('EXCESO EN<br>GRASAS<br>TRANS', 'MINSALUD');
+        sealsCount++;
+      }
+      addRow(tbody, 'Grasas trans', `${transFatPct.toFixed(2)}% de kcal`, '< 1.0% de kcal', excessTrans);
+
+      // 4. Sodio: Sólidos >= 300mg por 100g (o ratio >= 1mg/kcal); Líquidos >= 100mg por 100ml
+      const sodiumThreshold = foodType === 'solid' ? 300 : 100;
+      const sodiumRatio = kcal > 0 ? sodium / kcal : 0;
+      const excessSodium = sodium >= sodiumThreshold || (sodiumRatio >= 1.0 && sodium > 0);
+      if (excessSodium) {
+        addOctagon('EXCESO EN<br>SODIO', 'MINSALUD');
+        sealsCount++;
+      }
+      addRow(tbody, 'Sodio', `${sodium.toFixed(0)} mg`, `< ${sodiumThreshold} mg`, excessSodium);
+
+      // 5. Edulcorantes
+      if (hasSweeteners) {
+        addRectangle('CONTIENE EDULCORANTES', 'NO RECOMENDABLE EN NIÑOS');
+        sealsCount++;
+      }
+      addRow(tbody, 'Edulcorantes', hasSweeteners ? 'Presentes' : 'Ausentes', 'No permitidos para niños', hasSweeteners);
+
+      if (sealsCount === 0) {
+        placeholder.style.display = 'block';
+      } else {
+        placeholder.style.display = 'none';
+      }
+    }
+
+    function addOctagon(text, sub) {
+      const oct = document.createElement('div');
+      oct.className = 'octagon';
+      oct.innerHTML = `<div class="octagon-inner">${text}</div><div class="octagon-sub">${sub}</div>`;
+      document.getElementById('sealsContainer').appendChild(oct);
+    }
+
+    function addRectangle(text, sub) {
+      const rect = document.createElement('div');
+      rect.className = 'rectangle-seal';
+      rect.innerHTML = `<div>${text}</div><div class="rectangle-sub">${sub}</div>`;
+      document.getElementById('sealsContainer').appendChild(rect);
+    }
+
+    function addRow(tbody, param, value, limit, isExcess) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${param}</strong></td>
+        <td>${value}</td>
+        <td style="color: #94a3b8;">${limit}</td>
+        <td>
+          <span class="status-badge ${isExcess ? 'status-excess' : 'status-pass'}">
+            ${isExcess ? 'Octágono' : 'Cumple'}
+          </span>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    // Inicializar al cargar
+    calculateSeals();
+  </script>
+</body>
+</html>

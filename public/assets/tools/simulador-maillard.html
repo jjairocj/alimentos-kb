@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Cinético de la Reacción de Maillard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f1d;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --primary: #f59e0b;
+      --accent: #38bdf8;
+      --danger: #ef4444;
+      --success: #10b981;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .widget-container {
+      max-width: 920px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+    }
+    .widget-header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .widget-header h2 {
+      font-size: 1.45rem;
+      color: #fff;
+    }
+    .widget-header p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 820px) {
+      .grid-layout { grid-template-columns: 1fr; }
+    }
+    .controls-panel {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .slider-box label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .slider-box span.val {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary);
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .hint-scale {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .display-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .crust-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .crust-preview-box {
+      width: 110px;
+      height: 110px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: inset 0 0 16px rgba(0,0,0,0.5), 0 4px 14px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .crust-details h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .crust-details p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .rate-bar-container {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .rate-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .rate-bar-track {
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .rate-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444);
+      border-radius: 6px;
+      transition: width 0.25s ease;
+    }
+    .compounds-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .compounds-card h4 {
+      font-size: 0.92rem;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .compounds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .compound-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+    }
+    .compound-name { font-weight: 600; color: #f8fafc; }
+    .compound-profile { font-size: 0.75rem; color: var(--muted); }
+    .compound-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .status-active { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .status-inactive { background: rgba(255,255,255,0.05); color: #64748b; }
+    .status-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="widget-container">
+    <div class="widget-header">
+      <h2>🔥 Simulador Cinético de la Reacción de Maillard</h2>
+      <p>Modula la temperatura, la actividad de agua y el pH para predecir color, tasa de pardeamiento y aromas de Strecker.</p>
+    </div>
+
+    <div class="grid-layout">
+      <!-- Left: Controls -->
+      <div class="controls-panel">
+        <div class="slider-box">
+          <label>Temperatura en Superficie: <span class="val" id="valTemp">155 °C</span></label>
+          <input type="range" id="sliderTemp" min="60" max="210" value="155" step="1">
+          <div class="hint-scale">
+            <span>60°C (Lento)</span>
+            <span>100°C (Hervido)</span>
+            <span>150°C (Dorado)</span>
+            <span>200°C (Quemado)</span>
+          </div>
+        </div>
+
+        <div class="slider-box">
+          <label>Actividad de Agua (aw): <span class="val" id="valAw">0.68</span></label>
+          <input type="range" id="sliderAw" min="0.10" max="0.95" value="0.68" step="0.01">
+          <div class="hint-scale">
+            <span>0.1 (Seco)</span>
+            <span>0.65-0.75 (Pico Máx)</span>
+            <span>0.95 (Inhibición H2O)</span>
+          </div>
+        </div>
+
+        <div class="slider-box">
+          <label>pH del Medio: <span class="val" id="valPh">7.2</span></label>
+          <input type="range" id="sliderPh" min="3.5" max="9.5" value="7.2" step="0.1">
+          <div class="hint-scale">
+            <span>3.5 (Ácido -NH3+)</span>
+            <span>7.0 (Neutro)</span>
+            <span>9.5 (Alcalino Pretzel)</span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.78rem; color: #94a3b8; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; line-height: 1.45;">
+          <strong>Regla Maillard:</strong> El grupo amino libre (<span style="color:#38bdf8;">-NH₂</span>) requiere ser desprotonado (favorecido a pH &ge; 7). El agua en exceso diluye los reactivos e hidroliza intermediarios, mientras que la falta de agua frena la difusión.
+        </div>
+      </div>
+
+      <!-- Right: Displays -->
+      <div class="display-panel">
+        <div class="crust-card">
+          <div class="crust-preview-box" id="crustColorBox">🥐</div>
+          <div class="crust-details">
+            <h3 id="crustStageTitle">Corteza Dorada Óptima (155°C)</h3>
+            <p id="crustStageDesc">Polimerización activa de melanoidinas aromáticas. Síntesis intensa de pirazinas y furanos con textura crujiente.</p>
+          </div>
+        </div>
+
+        <div class="rate-bar-container">
+          <div class="rate-head">
+            <span>Velocidad Relativa de Reacción Maillard:</span>
+            <span id="valRatePct" style="color:var(--primary); font-family:monospace;">88%</span>
+          </div>
+          <div class="rate-bar-track">
+            <div class="rate-bar-fill" id="rateBarFill" style="width: 88%;"></div>
+          </div>
+        </div>
+
+        <div class="compounds-card">
+          <h4>🧪 Moléculas y Perfiles Sensoriales Activos</h4>
+          <div class="compounds-list">
+            <div class="compound-item">
+              <div>
+                <div class="compound-name">2-Acetil-1-pirrolina</div>
+                <div class="compound-profile">Aroma a corteza de pan recién horneado y palomitas de maíz</div>
+              </div>
+              <span class="compound-status status-active" id="badgePyr">SINTETIZANDO</span>
+            </div>
+
+            <div class="compound-item">
+              <div>
+                <div class="compound-name">Alquilpirazinas (2,5-dimetilpirazina)</div>
+                <div class="compound-profile">Notas tostadas de café, avellanas y cacao tostado</div>
+              </div>
+              <span class="compound-status status-active" id="badgePyrz">SINTETIZANDO</span>
+            </div>
+
+            <div class="compound-item">
+              <div>
+                <div class="compound-name">Furanonas (Sotolón / Furaneol)</div>
+                <div class="compound-profile">Notas dulces a caramelo, jarabe de arce y toffee</div>
+              </div>
+              <span class="compound-status status-active" id="badgeFur">SINTETIZANDO</span>
+            </div>
+
+            <div class="compound-item">
+              <div>
+                <div class="compound-name">Acrilamida (Subproducto Tóxico)</div>
+                <div class="compound-profile">Preocupación sanitaria a T &gt; 165°C con asparagina y azúcares</div>
+              </div>
+              <span class="compound-status status-inactive" id="badgeAcryl">CONTROLADO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sliderTemp = document.getElementById('sliderTemp');
+    const sliderAw = document.getElementById('sliderAw');
+    const sliderPh = document.getElementById('sliderPh');
+
+    const valTemp = document.getElementById('valTemp');
+    const valAw = document.getElementById('valAw');
+    const valPh = document.getElementById('valPh');
+
+    const crustColorBox = document.getElementById('crustColorBox');
+    const crustStageTitle = document.getElementById('crustStageTitle');
+    const crustStageDesc = document.getElementById('crustStageDesc');
+    const valRatePct = document.getElementById('valRatePct');
+    const rateBarFill = document.getElementById('rateBarFill');
+
+    const badgePyr = document.getElementById('badgePyr');
+    const badgePyrz = document.getElementById('badgePyrz');
+    const badgeFur = document.getElementById('badgeFur');
+    const badgeAcryl = document.getElementById('badgeAcryl');
+
+    function updateSimulation() {
+      const T = parseFloat(sliderTemp.value);
+      const aw = parseFloat(sliderAw.value);
+      const pH = parseFloat(sliderPh.value);
+
+      valTemp.textContent = T + ' °C';
+      valAw.textContent = aw.toFixed(2);
+      valPh.textContent = pH.toFixed(1);
+
+      // Temperature factor (Arrhenius curve)
+      let fT = 0;
+      if (T >= 80) {
+        fT = Math.pow((T - 80) / (160 - 80), 1.8);
+      }
+
+      // Water activity factor (Bell curve centered around aw = 0.68)
+      let fAw = Math.exp(-Math.pow((aw - 0.68) / 0.22, 2));
+
+      // pH factor (Sigmoidal, unprotonated amine at higher pH)
+      let fPh = 1 / (1 + Math.exp(-(pH - 6.2) * 1.5));
+
+      // Combined rate
+      let rate = Math.min(1.0, Math.max(0.0, fT * fAw * fPh));
+      let pct = Math.round(rate * 100);
+
+      valRatePct.textContent = pct + '%';
+      rateBarFill.style.width = pct + '%';
+
+      // Visual crust styling & stages
+      if (T < 100) {
+        crustColorBox.style.backgroundColor = '#fef3c7';
+        crustColorBox.textContent = '🥩';
+        crustStageTitle.textContent = `Fase Cruda / Inicial (${T}°C)`;
+        crustStageDesc.textContent = "Reacciones de adición aldol lentas o imperceptibles. Los grupos amino y azúcares apenas comienzan a condensar sin color.";
+      } else if (T < 135) {
+        crustColorBox.style.backgroundColor = '#fde68a';
+        crustColorBox.textContent = '🥔';
+        crustStageTitle.textContent = `Inicio de Deshidratación (${T}°C)`;
+        crustStageDesc.textContent = "Reordenamientos de Amadori y Heyns. Evaporación de agua libre superficial. Inicio de formación de compuestos volátiles ligeros.";
+      } else if (T <= 170) {
+        crustColorBox.style.backgroundColor = '#b45309';
+        crustColorBox.textContent = '🍞';
+        crustStageTitle.textContent = `Dorado Óptimo y Melanoidinas (${T}°C)`;
+        crustStageDesc.textContent = "Degradación activa de Strecker. Polimerización de melanoidinas marrones brillantes y explosión de pirazinas tostadas.";
+      } else {
+        crustColorBox.style.backgroundColor = '#1c1917';
+        crustColorBox.textContent = '⚠️';
+        crustStageTitle.textContent = `Pirólisis y Quemado (${T}°C)`;
+        crustStageDesc.textContent = "Carbonización térmica de la materia orgánica. Destrucción de aminoácidos esenciales y formación acelerada de hidrocarburos y acrilamida.";
+      }
+
+      // Aromas & Toxic compounds
+      if (rate > 0.4 && T >= 120 && T <= 180) {
+        badgePyr.className = 'compound-status status-active';
+        badgePyr.textContent = 'SINTETIZANDO';
+      } else {
+        badgePyr.className = 'compound-status status-inactive';
+        badgePyr.textContent = 'INACTIVO';
+      }
+
+      if (rate > 0.3 && T >= 135 && T <= 190) {
+        badgePyrz.className = 'compound-status status-active';
+        badgePyrz.textContent = 'SINTETIZANDO';
+      } else {
+        badgePyrz.className = 'compound-status status-inactive';
+        badgePyrz.textContent = 'INACTIVO';
+      }
+
+      if (rate > 0.25 && T >= 110 && T <= 165) {
+        badgeFur.className = 'compound-status status-active';
+        badgeFur.textContent = 'SINTETIZANDO';
+      } else {
+        badgeFur.className = 'compound-status status-inactive';
+        badgeFur.textContent = 'INACTIVO';
+      }
+
+      if (T >= 170) {
+        badgeAcryl.className = 'compound-status status-danger';
+        badgeAcryl.textContent = '⚠️ RIESGO ALTO';
+      } else if (T >= 145 && aw > 0.4) {
+        badgeAcryl.className = 'compound-status status-active';
+        badgeAcryl.textContent = 'TRAZAS';
+      } else {
+        badgeAcryl.className = 'compound-status status-inactive';
+        badgeAcryl.textContent = 'CONTROLADO';
+      }
+    }
+
+    sliderTemp.addEventListener('input', updateSimulation);
+    sliderAw.addEventListener('input', updateSimulation);
+    sliderPh.addEventListener('input', updateSimulation);
+
+    updateSimulation();
+  </script>
+</body>
+</html>

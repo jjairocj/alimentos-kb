@@ -32,7 +32,10 @@ export default async function ModuleDetailPage({ params }: PageProps) {
   const { id } = await params;
 
   // Find module by slug
-  const moduleIndex = modulesData.findIndex(m => (m.path.split('/').pop() || '') === id);
+  const moduleIndex = modulesData.findIndex(m => {
+    const slug = m.path.split('/').pop() || '';
+    return slug === id || slug.startsWith(id + '-') || slug.split('-')[0] === id.toLowerCase();
+  });
   if (moduleIndex === -1) {
     notFound();
   }

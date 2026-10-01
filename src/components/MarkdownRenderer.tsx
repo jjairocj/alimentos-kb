@@ -117,7 +117,8 @@ export default function MarkdownRenderer({
     text = text.replace(/\[\^(\d+)\]/g, '<sup class="font-mono text-cyan-400 font-bold ml-0.5 cursor-pointer" title="Cita científica [$1]">[$1]</sup>');
 
     // 10. Normalize internal links (remove /alimentos/ prefix if present)
-    text = text.replace(/\]\(\/alimentos\//g, '](');
+    text = text.replace(/\]\(\/alimentos\//g, '](/');
+    text = text.replace(/\]\(\/…\)/g, '](#');
 
     // 11. Configure marked
     const markedInstance = new Marked({

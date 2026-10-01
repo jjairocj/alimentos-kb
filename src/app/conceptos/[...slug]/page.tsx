@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import conceptsData from '@/data/concepts.json';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
+import StudyActionToolbar from '@/components/StudyActionToolbar';
 
 interface PageProps {
   params: Promise<{ slug: string[] }>;
@@ -73,7 +74,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
       </div>
 
       {/* Header Ficha Card */}
-      <div className="lab-card p-6 sm:p-8 mb-8 relative overflow-hidden border-t-4 border-t-[var(--accent-cyan)]">
+      <div className="lab-card p-6 sm:p-8 mb-6 relative overflow-hidden border-t-4 border-t-[var(--accent-cyan)]">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
             Área: {area}
@@ -103,6 +104,9 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             {concept.description}
           </p>
         )}
+
+        {/* Study Progress & Persistent Notes Toolbar */}
+        <StudyActionToolbar type="concept" id={concept.path} title={concept.title} />
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[var(--border-lab)]">

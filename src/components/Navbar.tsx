@@ -7,7 +7,7 @@ import { useTheme } from "@/context/ThemeContext";
 import SearchModal from "./SearchModal";
 import {
   FlaskConical, Sun, Moon, Search, Menu, X, BookOpen,
-  Atom, ShieldAlert, Scale, Calculator, Dna
+  Atom, ShieldAlert, Scale, Calculator, Dna, BookA, Library, Database
 } from "lucide-react";
 
 export default function Navbar() {
@@ -19,16 +19,19 @@ export default function Navbar() {
   const navLinks = [
     { href: "/modulos", label: "Módulos", icon: BookOpen },
     { href: "/conceptos", label: "Conceptos", icon: Atom },
-    { href: "/ingredientes", label: "Ingredientes", icon: Dna },
+    { href: "/ingredientes", label: "Aditivos", icon: Dna },
     { href: "/laboratorio", label: "Laboratorio", icon: Calculator },
-    { href: "/mitos", label: "Mitos & Evidencia", icon: ShieldAlert },
+    { href: "/mitos", label: "Mitos", icon: ShieldAlert },
     { href: "/regulacion", label: "Regulación", icon: Scale },
+    { href: "/glosario", label: "Glosario", icon: BookA },
+    { href: "/fuentes", label: "Fuentes", icon: Library },
+    { href: "/progreso", label: "Progreso", icon: Database, highlight: true },
   ];
 
   return (
     <>
       <header className="sticky top-0 z-40 bg-[var(--bg-primary)]/85 backdrop-blur-md border-b border-[var(--border-lab)] transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
           
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
@@ -46,7 +49,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 font-mono text-xs font-bold">
+          <nav className="hidden xl:flex items-center gap-1 font-mono text-xs font-bold">
             {navLinks.map((item) => {
               const active = pathname.startsWith(item.href);
               const Icon = item.icon;
@@ -54,9 +57,11 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-2 rounded-xl flex items-center gap-1.5 transition-all ${
+                  className={`px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 transition-all ${
                     active
                       ? "bg-cyan-500/10 text-[var(--accent-cyan)] border border-cyan-500/30"
+                      : item.highlight
+                      ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-subtle)]"
                   }`}
                 >
@@ -77,13 +82,13 @@ export default function Navbar() {
               title="Buscar (Cmd+K)"
             >
               <Search className="w-3.5 h-3.5 text-[var(--accent-cyan)]" />
-              <span className="hidden md:inline">Buscar 428 temas...</span>
+              <span className="hidden md:inline">Buscar...</span>
               <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] rounded bg-[var(--bg-input)] border border-[var(--border-lab)] text-[var(--text-muted)]">
                 ⌘K
               </kbd>
             </button>
 
-            {/* Theme Toggle (Dark Lab vs Editorial Science) */}
+            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-xl bg-[var(--bg-card-subtle)] hover:bg-[var(--bg-card)] border border-[var(--border-lab)] text-[var(--text-primary)] transition-colors"
@@ -99,7 +104,7 @@ export default function Navbar() {
             {/* Mobile menu hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-[var(--bg-card-subtle)] border border-[var(--border-lab)] text-[var(--text-primary)]"
+              className="xl:hidden p-2 rounded-xl bg-[var(--bg-card-subtle)] border border-[var(--border-lab)] text-[var(--text-primary)]"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -110,7 +115,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden p-4 bg-[var(--bg-card)] border-b border-[var(--border-lab)] space-y-1 font-mono text-xs">
+          <div className="xl:hidden p-4 bg-[var(--bg-card)] border-b border-[var(--border-lab)] grid grid-cols-2 gap-1 font-mono text-xs">
             {navLinks.map((item) => {
               const active = pathname.startsWith(item.href);
               const Icon = item.icon;
@@ -119,9 +124,11 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 p-2.5 rounded-xl font-bold transition-colors ${
+                  className={`flex items-center gap-2 p-2.5 rounded-xl font-bold transition-colors ${
                     active
                       ? "bg-cyan-500/10 text-[var(--accent-cyan)] border border-cyan-500/30"
+                      : item.highlight
+                      ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-subtle)]"
                   }`}
                 >

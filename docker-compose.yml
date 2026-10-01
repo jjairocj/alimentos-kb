@@ -10,3 +10,6 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+      - DATABASE_URL=file:/app/prisma/data/alimentos.db
+    volumes:
+      - ./data:/app/prisma/data

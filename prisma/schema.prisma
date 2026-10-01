@@ -1,0 +1,46 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserProgress {
+  id            String   @id @default("default-user")
+  currentModule String?
+  currentPath   String?
+  streakDays    Int      @default(1)
+  lastVisit     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model ModuleProgress {
+  id          String    @id @default(uuid())
+  moduleCode  String    @unique
+  isCompleted Boolean   @default(false)
+  completedAt DateTime?
+  notes       String?   @default("")
+  rating      Int?      @default(0)
+  updatedAt   DateTime  @updatedAt
+}
+
+model ConceptProgress {
+  id          String    @id @default(uuid())
+  conceptPath String    @unique
+  isStudied   Boolean   @default(false)
+  isMastered  Boolean   @default(false)
+  studiedAt   DateTime?
+  notes       String?   @default("")
+  updatedAt   DateTime  @updatedAt
+}
+
+model StudyLog {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  category  String   @default("diario")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

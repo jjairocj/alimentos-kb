@@ -1,0 +1,499 @@
+[
+  {
+    "path": "regulacion/comparaciones/dioxido-de-titanio",
+    "title": "Comparación: dióxido de titanio (E171) en Colombia, UE y EE. UU.",
+    "description": "Ejemplo de cómo una misma evaluación científica lleva a decisiones regulatorias distintas; plantilla para el Proyecto 6",
+    "tags": [
+      "tipo-analisis",
+      "area-regulacion",
+      "mod-m20",
+      "jur-co",
+      "jur-ue",
+      "jur-us",
+      "estado-borrador"
+    ],
+    "body": "> **Estado a 2026-09.** Borrador: completar con los textos vigentes (Proyecto 6).\n{.is-warning}\n\n# Comparación: dióxido de titanio (E171)\n\n| Aspecto | Unión Europea | Estados Unidos | Colombia | Codex |\n|---|---|---|---|---|\n| Evaluación | EFSA 2021: no puede considerarse seguro como aditivo por no poder descartarse la genotoxicidad[^1] | ⚠ Por documentar (FDA) | ⚠ Por documentar | ⚠ JECFA: por documentar |\n| Decisión | Retirado (Reglamento (UE) 2022/63 ⚠) | ⚠ Autorizado como colorante con condiciones (verificar 21 CFR 73) | ⚠ Por documentar (norma de aditivos pendiente de identificar) | ⚠ GSFA: por verificar |\n| Etiquetado | — | — | \"Colorante (dióxido de titanio)\" si se usa (Res. 5109) | — |\n\n## Lecciones\n- La misma evidencia puede llevar a decisiones distintas: diferencias en criterios de gestión (precaución), en los datos considerados y en los tiempos regulatorios ([Análisis de riesgos](/regulacion/conceptos/analisis-de-riesgos)).\n- Para el Proyecto 6, repetir esta tabla con otro aditivo o con el etiquetado frontal.\n\n## Fuentes\n[^1]: EFSA Panel on Food Additives. Safety assessment of titanium dioxide (E171) as a food additive. *EFSA J.* 2021. doi:10.2903/j.efsa.2021.6585 ✔ verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/conceptos/analisis-de-riesgos",
+    "title": "Análisis de riesgos en la regulación",
+    "description": "Evaluación (científica), gestión (política) y comunicación del riesgo; quién hace cada una en el Codex, la UE, EE. UU. y Colombia",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# Análisis de riesgos en la regulación\n\n**En una frase:** la regulación de alimentos se basa en separar la **evaluación del riesgo** (la ciencia) de la **gestión del riesgo** (las decisiones), con comunicación entre ambas.\n\n## Requiere\n- [Peligro y riesgo](/conceptos/toxicologia/peligro-y-riesgo)\n\n## Quién hace qué\n| Ámbito | Evaluación del riesgo | Gestión del riesgo |\n|---|---|---|\n| **Internacional** | [JECFA](/regulacion/organismos/jecfa) (aditivos, contaminantes), JMPR (plaguicidas), JEMRA (microbiología) | [Codex Alimentarius](/regulacion/organismos/codex) |\n| **UE** | [EFSA](/regulacion/organismos/efsa) | [Comisión Europea](/regulacion/organismos/comision-europea) y Estados miembros |\n| **EE. UU.** | [FDA](/regulacion/organismos/fda) (y USDA para carnes) | FDA / USDA |\n| **Colombia** | ⚠ Por documentar: el país se apoya en evaluaciones internacionales (JECFA/Codex) en muchos casos | [MinSalud](/regulacion/organismos/minsalud) (normas), [INVIMA](/regulacion/organismos/invima) (vigilancia y control) |\n\n- La gestión también considera factores no científicos (viabilidad, costo, comercio, preferencias sociales). Por eso dos jurisdicciones con la misma evaluación pueden tomar decisiones distintas.\n\n## Fuentes\n- FAO/OMS. *Principles and methods for the risk assessment of chemicals in food* (EHC 240). 2009. https://www.who.int/publications/i/item/9789241572408 ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/conceptos/gras",
+    "title": "GRAS (Estados Unidos)",
+    "description": "Generalmente reconocido como seguro': vía de la FDA para sustancias añadidas a alimentos; notificaciones voluntarias y debate",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# GRAS (Estados Unidos)\n\n**En una frase:** en EE. UU., una sustancia puede añadirse a los alimentos sin aprobación previa como aditivo si expertos cualificados la reconocen generalmente como segura (GRAS) para su uso previsto; la notificación a la FDA es voluntaria.\n\n## Explicación\n- Dos vías principales en EE. UU.: **aditivo alimentario** (aprobación previa de la FDA, 21 CFR 170–189) o **GRAS**[^1].\n- La FDA mantiene un **inventario de notificaciones GRAS**; las empresas pueden notificar voluntariamente, y la FDA responde si tiene o no preguntas.\n- **Debate:** críticos señalan que las autodeterminaciones GRAS sin notificación limitan la transparencia; en 2025 hubo anuncios de la FDA/HHS sobre reformar este sistema ⚠ (verificar el estado actual).\n- Por esta y otras diferencias, un mismo ingrediente puede tener distinto estatus en EE. UU., la UE y Colombia (Proyecto 6).\n\n## Fuentes\n[^1]: FDA. *Generally Recognized as Safe (GRAS).* https://www.fda.gov/food/food-ingredients-packaging/generally-recognized-safe-gras ✔ URL verificada 2026-09-28\n- 21 CFR Part 170. https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-170 ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/conceptos/ida-nivel-maximo-y-limites",
+    "title": "IDA, nivel máximo de uso y límite máximo",
+    "description": "Cómo se pasa de una IDA (evaluación) a niveles máximos de uso en alimentos (gestión); límites máximos de contaminantes y residuos",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# IDA, nivel máximo de uso y límite máximo\n\n**En una frase:** la IDA dice cuánto se puede ingerir sin riesgo apreciable; el **nivel máximo de uso** dice cuánto aditivo se puede poner en cada alimento, calculado para que la exposición total quede por debajo de la IDA.\n\n## Requiere\n- [IDA](/conceptos/toxicologia/ida) · [Evaluación de la exposición](/conceptos/toxicologia/evaluacion-de-exposicion)\n\n## Explicación\n1. Evaluación: JECFA/EFSA fijan la IDA (mg/kg de peso corporal/día).\n2. Gestión: el Codex (GSFA) o la legislación nacional establecen, por **categoría de alimento**, el nivel máximo (mg/kg de alimento) o \"BPF\" (buenas prácticas de fabricación: la cantidad mínima necesaria, sin límite numérico) ⚠ (verificar la redacción en el GSFA).\n3. Se estima la exposición con los consumos reales; si se acerca a la IDA, se revisan usos o niveles.\n- **Contaminantes:** **límites máximos** (LM) en alimentos (p. ej. aflatoxinas, plomo).\n- **Residuos de plaguicidas y medicamentos veterinarios:** **límites máximos de residuos** (LMR).\n\n## Fuentes\n- FAO/OMS. *Principles and methods for the risk assessment of chemicals in food* (EHC 240). 2009. https://www.who.int/publications/i/item/9789241572408 ✔ URL verificada 2026-09-28\n- Codex GSFA Online ⚠ (acceso manual): https://www.fao.org/gsfaonline/index.html"
+  },
+  {
+    "path": "regulacion/conceptos/jerarquia-normativa-colombia",
+    "title": "Jerarquía normativa en Colombia",
+    "description": "Constitución, leyes, decretos y resoluciones: cómo encajan las normas de alimentos y dónde consultarlas",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# Jerarquía normativa en Colombia\n\n**En una frase:** en Colombia, las leyes del Congreso fijan el marco, los decretos del Gobierno las reglamentan y las resoluciones del Ministerio de Salud establecen los reglamentos técnicos detallados; el INVIMA vigila su cumplimiento.\n\n## Explicación\n| Nivel | Emisor | Ejemplo en alimentos |\n|---|---|---|\n| Constitución | — | Derecho a la salud |\n| **Ley** | Congreso | Ley 9 de 1979 (Código Sanitario); [Ley 2120 de 2021](/regulacion/normas/co-ley-2120-2021) (entornos alimentarios saludables) |\n| **Decreto** | Presidencia / Gobierno | [Decreto 1944 de 1996](/regulacion/normas/co-dec-1944-1996) (fortificación de la harina); [Decreto 547 de 1996](/regulacion/normas/co-dec-547-1996) (sal) |\n| **Resolución** | Ministerio de Salud y Protección Social | [Res. 810 de 2021](/regulacion/normas/co-res-810-2021), [Res. 5109 de 2005](/regulacion/normas/co-res-5109-2005), [Res. 2674 de 2013](/regulacion/normas/co-res-2674-2013) |\n| Actos del INVIMA | INVIMA | Registros sanitarios, conceptos, alertas |\n\n## Dónde consultar el texto vigente\n- **Normograma del INVIMA** (textos compilados con notas de vigencia): https://normograma.invima.gov.co ✔\n- Ministerio de Salud (normatividad), Diario Oficial, SUIN-Juriscol, Función Pública (Gestor Normativo).\n- Leer siempre las **notas de vigencia** (modificaciones, correcciones, derogaciones).\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/ley_2120_2021.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/conceptos/registro-sanitario",
+    "title": "Registro, permiso y notificación sanitaria (Colombia)",
+    "description": "Autorizaciones del INVIMA según el riesgo en salud pública: NSA, PSA y RSA (Resolución 2674 de 2013)",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# Registro, permiso y notificación sanitaria (Colombia)\n\n**En una frase:** en Colombia, todo alimento que se venda directamente al consumidor necesita, según su riesgo en salud pública, una notificación (NSA), un permiso (PSA) o un registro sanitario (RSA) del INVIMA.\n\n## Explicación\n- La Resolución 2674 de 2013 establece los requisitos sanitarios de fabricación, procesamiento, almacenamiento y comercialización, y los requisitos para la **notificación, permiso o registro sanitario según el riesgo** (artículo 1)[^1].\n- Artículo 37 (modificado por la Res. 3168 de 2015): el INVIMA asigna la nomenclatura **NSA** (riesgo bajo), **PSA** (riesgo medio) o **RSA** (riesgo alto) ⚠ (correspondencia de niveles por confirmar en el texto)[^1].\n- El código aparece en la etiqueta ([Partes de una etiqueta](/etiquetado/partes-de-una-etiqueta)) y se puede consultar en el buscador de registros del INVIMA.\n- Registro **no** significa que el producto sea \"saludable\": significa que cumple requisitos sanitarios.\n\n## Fuentes\n[^1]: Ministerio de Salud y Protección Social. Resolución 2674 de 2013, artículos 1 y 37. https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_2674_2013.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/conceptos/tipos-de-documentos",
+    "title": "Estándar, norma, regulación, guía y recomendación",
+    "description": "Diferencias entre documentos voluntarios y obligatorios; el caso del Codex; límites legales, IDA y niveles máximos",
+    "tags": [
+      "tipo-concepto",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador",
+      "ev-establecido"
+    ],
+    "body": "> **Tipo:** concepto · **Área:** regulación · **Módulo:** M20 · **Estado:** borrador\n> **Creada:** 2026-09-28 · **Última revisión:** 2026-09-28 · **Próxima revisión:** 2026-12-28\n{.is-info}\n\n# Estándar, norma, regulación, guía y recomendación\n\n**En una frase:** lo que distingue a estos documentos es **quién los emite** y **si son obligatorios**; los estándares del Codex son voluntarios, pero se vuelven obligatorios cuando un país los adopta en su legislación.\n\n## Explicación\n| Término | Qué es | ¿Obligatorio? | Ejemplo |\n|---|---|---|---|\n| **Estándar / norma internacional** | Texto de referencia acordado internacionalmente | No, salvo adopción nacional; referencia en el comercio internacional (OMC) | Codex CXS 192-1995 (GSFA) |\n| **Norma técnica** | Especificación técnica (a menudo voluntaria) | Voluntaria salvo que se haga obligatoria | NTC del ICONTEC ⚠ |\n| **Regulación / reglamento técnico** | Norma legal obligatoria | **Sí** | Resolución 810 de 2021 |\n| **Guía / directriz** | Orientación sobre cómo cumplir o aplicar | No (orientativa) | Codex CXG 2-1985; guías de la FDA |\n| **Recomendación** | Consejo basado en evidencia para la población o los gobiernos | No | Guías de la OMS sobre azúcares |\n| **Límite legal** | Valor máximo fijado en una regulación | **Sí** | Contenido de trans industriales (Res. 2066/2024) |\n| **IDA** | Valor de **evaluación** del riesgo, no un límite legal | No directamente | IDA del aspartamo (JECFA) |\n| **Nivel máximo de uso** | Cantidad máxima permitida de un aditivo en un alimento | **Sí** (si está en la norma) | Niveles del GSFA o del Reglamento (CE) 1333/2008 |\n\n- Más detalle: [IDA, nivel máximo y límites](/regulacion/conceptos/ida-nivel-maximo-y-limites).\n\n## Fuentes\n- Codex Alimentarius. *Acerca del Codex.* https://www.fao.org/fao-who-codexalimentarius/es/ ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-dec-1944-1996",
+    "title": "Decreto 1944 de 1996 (Colombia) — fortificación de la harina de trigo",
+    "description": "Fortificación obligatoria de la harina de trigo con tiamina, riboflavina, niacina, ácido fólico y hierro",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Decreto 1944 de 1996 (Colombia) — fortificación de la harina de trigo\n\n| Campo | Valor |\n|---|---|\n| Emisor | Presidencia de la República |\n| Tipo | Decreto |\n| Fecha | 1996 |\n| Vigencia | ⚠ revisar notas de vigencia y modificaciones |\n\n## Resumen\nObliga a añadir micronutrientes a la harina de trigo que se comercializa en Colombia.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 3: definiciones (fortificación). Art. 4: cantidades mínimas por kg (tiamina 6 mg, riboflavina 4 mg, niacina 55 mg, ácido fólico 1,54 mg, hierro 44 mg; calcio opcional 1280 mg).\n\n## Páginas de la Wiki que la usan\n- [Fortificación](/conceptos/nutricion/fortificacion) · [Hierro](/conceptos/nutricion/hierro) · [Folato y B12](/conceptos/nutricion/folato-y-b12)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/decreto_1944_1996.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-dec-547-1996",
+    "title": "Decreto 547 de 1996 (Colombia) — sal para consumo humano",
+    "description": "Requisitos de la sal para consumo humano: yodación (50–100 ppm) y fluoración (180–220 ppm), antiaglomerantes y rotulado",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Decreto 547 de 1996 (Colombia) — sal para consumo humano\n\n| Campo | Valor |\n|---|---|\n| Emisor | Presidencia de la República |\n| Tipo | Decreto |\n| Fecha | 1996 |\n| Vigencia | ⚠ revisar notas de vigencia |\n\n## Resumen\nReglamenta la producción, empaque y comercialización de la sal para consumo humano.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 4: yodo como yoduro 50–100 ppm; flúor como fluoruro 180–220 ppm. Art. 5: requisitos fisicoquímicos y antiaglomerantes permitidos. Arts. 12–13: rotulado.\n\n## Páginas de la Wiki que la usan\n- [Yodo](/conceptos/nutricion/yodo) · [Fortificación](/conceptos/nutricion/fortificacion)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/decreto_0547_1996.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-ley-2120-2021",
+    "title": "Ley 2120 de 2021 (Colombia) — entornos alimentarios saludables",
+    "description": "Ley que fomenta entornos alimentarios saludables, ordena el etiquetado frontal de advertencia y medidas de educación y entornos escolares y laborales",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Ley 2120 de 2021 (Colombia) — entornos alimentarios saludables\n\n| Campo | Valor |\n|---|---|\n| Emisor | Congreso de la República |\n| Tipo | Ley |\n| Fecha | 30-07-2021 |\n\n## Resumen\nAdopta medidas para promover entornos alimentarios saludables, especialmente para niños, niñas y adolescentes, con información clara sobre los componentes de los alimentos para prevenir enfermedades no transmisibles. Ordena el etiquetado frontal de advertencia, luego reglamentado por el MinSalud (Res. 2492 de 2022).\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 1: objeto. Art. 5: etiquetado frontal de advertencia \"de alto impacto preventivo\" para productos con cantidad excesiva de nutrientes críticos. Art. 6: estrategias de información y educación. Art. 9: entornos saludables en espacios educativos. Art. 12: entornos laborales saludables.\n\n## Páginas de la Wiki que la usan\n- [Sellos frontales](/etiquetado/sellos-frontales-colombia)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/ley_2120_2021.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-res-2066-2024",
+    "title": "Resolución 2066 de 2024 (Colombia) — grasas trans industriales",
+    "description": "Contenidos máximos de grasas trans industriales en alimentos envasados y prohibición de aceites parcialmente hidrogenados; modifica el cálculo del sello de trans",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Resolución 2066 de 2024 (Colombia) — grasas trans industriales\n\n| Campo | Valor |\n|---|---|\n| Emisor | Ministerio de Salud y Protección Social |\n| Tipo | Resolución (reglamento técnico) |\n| Fecha | Publicada el 23-10-2024 (Diario Oficial 52.918) |\n| Aplicación | Límite de trans: 18 meses; prohibición de aceites parcialmente hidrogenados: 36 meses desde la publicación |\n\n## Resumen\nLimita las grasas trans industriales a 2 g por 100 g (o 100 mL) de grasa total y prohíbe los aceites parcialmente hidrogenados en alimentos envasados; su artículo 6 modifica el numeral 32.2 de la Res. 810 para calcular el sello con trans industriales.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 1: objeto. Art. 4: límites y prohibición. Art. 6: modificación del numeral 32.2 de la Res. 810.\n\n## Páginas de la Wiki que la usan\n- [Hidrogenación](/conceptos/alimentos/hidrogenacion) · [Isomería cis/trans](/conceptos/quimica/isomeria-cis-trans) · [Sellos frontales](/etiquetado/sellos-frontales-colombia)\n\n## Fuentes\n- Alcaldía de Bogotá (Régimen Legal): https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=169578 ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-res-2674-2013",
+    "title": "Resolución 2674 de 2013 (Colombia) — requisitos sanitarios",
+    "description": "Requisitos sanitarios para fabricar, procesar, envasar, almacenar, transportar y comercializar alimentos; notificación, permiso o registro sanitario según el riesgo",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Resolución 2674 de 2013 (Colombia) — requisitos sanitarios\n\n| Campo | Valor |\n|---|---|\n| Emisor | Ministerio de Salud y Protección Social |\n| Tipo | Resolución |\n| Fecha | 2013 |\n| Modificada por | Res. 3168 de 2015 (art. 37), entre otras ⚠ |\n\n## Resumen\nBase de las buenas prácticas de manufactura y del sistema de registro sanitario por riesgo en Colombia.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 1: objeto.\n- Art. 37: obligatoriedad de NSA, PSA o RSA según el riesgo.\n\n## Páginas de la Wiki que la usan\n- [Registro sanitario](/regulacion/conceptos/registro-sanitario)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_2674_2013.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-res-3803-2016",
+    "title": "Resolución 3803 de 2016 (Colombia) — RIEN",
+    "description": "Recomendaciones de Ingesta de Energía y Nutrientes para la población colombiana",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Resolución 3803 de 2016 (Colombia) — RIEN\n\n| Campo | Valor |\n|---|---|\n| Emisor | Ministerio de Salud y Protección Social |\n| Tipo | Resolución |\n| Fecha | 2016 |\n\n## Resumen\nEstablece los valores de referencia (EAR, RDA, AI, UL, AMDR) de energía y nutrientes para Colombia y el valor guía de azúcares libres (10 % del requerimiento de energía).\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Definiciones (azúcares libres, biodisponibilidad).\n- Tabla 12 (proteína), 16 (grasas), 17 (carbohidratos), 18 (fibra), 19 (agua), 20 (vitaminas liposolubles), 21–23 (otras vitaminas y minerales).\n\n## Páginas de la Wiki que la usan\n- [Valores de referencia](/conceptos/nutricion/valores-de-referencia) · [Azúcares](/conceptos/nutricion/azucares-totales-y-anadidos)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_3803_2016.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-res-5109-2005",
+    "title": "Resolución 5109 de 2005 (Colombia) — rotulado general",
+    "description": "Requisitos de rotulado o etiquetado de alimentos envasados y materias primas: nombre, ingredientes, aditivos, alérgenos, lote, vencimiento",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Resolución 5109 de 2005 (Colombia) — rotulado general\n\n| Campo | Valor |\n|---|---|\n| Emisor | Ministerio de la Protección Social |\n| Tipo | Resolución (reglamento técnico) |\n| Fecha | 2005 |\n| Vigencia | Vigente con modificaciones ⚠ (revisar notas de vigencia) |\n\n## Resumen\nReglamento técnico sobre la información mínima que debe llevar la etiqueta de los alimentos envasados.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Numeral 5.2: lista de ingredientes (orden decreciente, ingredientes compuestos, agua añadida).\n- 5.2.3: nombres genéricos, clases de aditivos, advertencias de tartrazina y aspartamo.\n- 5.2.4: aditivos transferidos y coadyuvantes.\n- Parágrafo del art. 5: alérgenos de declaración obligatoria (incluidos sulfitos ≥ 10 mg/kg).\n\n## Páginas de la Wiki que la usan\n- [Lista de ingredientes](/etiquetado/lista-de-ingredientes) · [Aditivos en la etiqueta](/etiquetado/aditivos-en-la-etiqueta)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/resolucion_minproteccion_5109_2005.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/co-res-810-2021",
+    "title": "Resolución 810 de 2021 (Colombia) — etiquetado nutricional y frontal",
+    "description": "Reglamento técnico de etiquetado nutricional y frontal de advertencia; modificada por las resoluciones 2492 de 2022 y 2066 de 2024 y corregida por la 254 de 2023",
+    "tags": [
+      "tipo-norma",
+      "jur-co",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** CO · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Resolución 810 de 2021 (Colombia) — etiquetado nutricional y frontal\n\n| Campo | Valor |\n|---|---|\n| Emisor | Ministerio de Salud y Protección Social |\n| Tipo | Resolución (reglamento técnico) |\n| Fecha | 2021 (Diario Oficial 51.707, 16-06-2021) |\n| Modificada por | Res. 2492 de 2022; Res. 2066 de 2024 (numeral 32.2, desde el 23-04-2026) |\n| Corregida por | Res. 254 de 2023 (artículo 32, Tabla 17) |\n| Ámbito | Alimentos para consumo humano envasados y productos procesados y ultraprocesados envasados, nacionales e importados, con excepciones |\n\n## Resumen\nEstablece qué debe declarar la tabla nutricional, los factores de energía, las condiciones de las declaraciones nutricionales y de salud y el etiquetado frontal de advertencia con octágonos \"EXCESO EN\" y \"CONTIENE EDULCORANTES\".\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Art. 2: ámbito. Art. 3: definiciones (azúcares totales, añadidos, edulcorante, sello positivo…).\n- Art. 11: factores de energía (4/4/9/7/3 kcal/g).\n- Tabla 3: nutrientes a declarar por 100 g/mL y por porción.\n- Arts. 16–22: declaraciones nutricionales; 16.3 prohíbe declaraciones con sellos.\n- Arts. 23–25: declaraciones de salud; 25.4 prohibidas con sellos; 25.7 prohíbe \"saludable\".\n- Art. 32 y Tabla 17: umbrales y forma de los sellos.\n\n## Páginas de la Wiki que la usan\n- [Tabla nutricional](/etiquetado/tabla-nutricional) · [Sellos frontales](/etiquetado/sellos-frontales-colombia) · [Declaraciones](/etiquetado/declaraciones) · [Azúcares](/conceptos/nutricion/azucares-totales-y-anadidos)\n\n## Fuentes\n- Normograma INVIMA: https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_0810_2021.htm ✔ texto consultado 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/codex-cxg-2-1985",
+    "title": "Codex CXG 2-1985 — Directrices sobre Etiquetado Nutricional",
+    "description": "Directrices internacionales sobre la declaración de nutrientes y el etiquetado nutricional",
+    "tags": [
+      "tipo-norma",
+      "jur-codex",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** Codex · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Codex CXG 2-1985 — Directrices sobre Etiquetado Nutricional\n\n| Campo | Valor |\n|---|---|\n| Emisor | Comisión del Codex Alimentarius (FAO/OMS) |\n| Tipo | Norma o directriz internacional (voluntaria) |\n| Versión | ⚠ verificar el año de la última revisión |\n\n## Resumen\nQué nutrientes declarar, cómo expresarlos, valores de referencia de nutrientes (VRN) y, en revisiones recientes, orientaciones sobre etiquetado frontal ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar la versión vigente en la lista de normas del Codex.\n\n## Páginas de la Wiki que la usan\n- [Aditivos](/conceptos/aditivos/aditivo-alimentario) · [Etiquetado](/etiquetado)\n\n## Fuentes\n- Codex Alimentarius, lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔ URL oficial verificada 2026-09-28 (texto por leer)"
+  },
+  {
+    "path": "regulacion/normas/codex-cxg-23-1997",
+    "title": "Codex CXG 23-1997 — Directrices para el Uso de Declaraciones Nutricionales y Saludables",
+    "description": "Condiciones internacionales para las declaraciones nutricionales y de salud",
+    "tags": [
+      "tipo-norma",
+      "jur-codex",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** Codex · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Codex CXG 23-1997 — Directrices para el Uso de Declaraciones Nutricionales y Saludables\n\n| Campo | Valor |\n|---|---|\n| Emisor | Comisión del Codex Alimentarius (FAO/OMS) |\n| Tipo | Norma o directriz internacional (voluntaria) |\n| Versión | ⚠ verificar el año de la última revisión |\n\n## Resumen\nDefine tipos de declaraciones y sus condiciones; referencia para normas nacionales como la Res. 810.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar la versión vigente en la lista de normas del Codex.\n\n## Páginas de la Wiki que la usan\n- [Aditivos](/conceptos/aditivos/aditivo-alimentario) · [Etiquetado](/etiquetado)\n\n## Fuentes\n- Codex Alimentarius, lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔ URL oficial verificada 2026-09-28 (texto por leer)"
+  },
+  {
+    "path": "regulacion/normas/codex-cxg-36-1989",
+    "title": "Codex CXG 36-1989 — Nombres de clase y Sistema Internacional de Numeración de Aditivos (INS)",
+    "description": "Lista de clases funcionales y números INS de los aditivos",
+    "tags": [
+      "tipo-norma",
+      "jur-codex",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** Codex · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Codex CXG 36-1989 — Nombres de clase y Sistema Internacional de Numeración de Aditivos (INS)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Comisión del Codex Alimentarius (FAO/OMS) |\n| Tipo | Norma o directriz internacional (voluntaria) |\n| Versión | ⚠ verificar el año de la última revisión |\n\n## Resumen\nDefine las clases funcionales de aditivos y asigna los números INS ([Sistema INS](/conceptos/aditivos/sistema-ins)).\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar la versión vigente en la lista de normas del Codex.\n\n## Páginas de la Wiki que la usan\n- [Aditivos](/conceptos/aditivos/aditivo-alimentario) · [Etiquetado](/etiquetado)\n\n## Fuentes\n- Codex Alimentarius, lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔ URL oficial verificada 2026-09-28 (texto por leer)"
+  },
+  {
+    "path": "regulacion/normas/codex-cxs-1-1985",
+    "title": "Codex CXS 1-1985 — Norma General para el Etiquetado de los Alimentos Preenvasados",
+    "description": "Norma internacional de etiquetado general",
+    "tags": [
+      "tipo-norma",
+      "jur-codex",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** Codex · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Codex CXS 1-1985 — Norma General para el Etiquetado de los Alimentos Preenvasados\n\n| Campo | Valor |\n|---|---|\n| Emisor | Comisión del Codex Alimentarius (FAO/OMS) |\n| Tipo | Norma o directriz internacional (voluntaria) |\n| Versión | ⚠ verificar el año de la última revisión |\n\n## Resumen\nEstablece la información mínima de la etiqueta (nombre, ingredientes, contenido neto, fechas, etc.); base de muchas normas nacionales, incluida la Res. 5109 de Colombia ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar la versión vigente en la lista de normas del Codex.\n\n## Páginas de la Wiki que la usan\n- [Aditivos](/conceptos/aditivos/aditivo-alimentario) · [Etiquetado](/etiquetado)\n\n## Fuentes\n- Codex Alimentarius, lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔ URL oficial verificada 2026-09-28 (texto por leer)"
+  },
+  {
+    "path": "regulacion/normas/codex-cxs-192-1995",
+    "title": "Codex CXS 192-1995 — Norma General para los Aditivos Alimentarios (GSFA)",
+    "description": "Qué aditivos se permiten en qué categorías de alimentos y en qué niveles máximos, a nivel internacional",
+    "tags": [
+      "tipo-norma",
+      "jur-codex",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** Codex · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Codex CXS 192-1995 — Norma General para los Aditivos Alimentarios (GSFA)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Comisión del Codex Alimentarius (FAO/OMS) |\n| Tipo | Norma o directriz internacional (voluntaria) |\n| Versión | ⚠ verificar el año de la última revisión |\n\n## Resumen\nNorma general del Codex sobre aditivos: principios de uso (justificación tecnológica, seguridad), sistema de categorías de alimentos y tablas de aditivos permitidos con niveles máximos. Se actualiza tras cada sesión de la Comisión.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar la versión vigente en la lista de normas del Codex.\n\n## Páginas de la Wiki que la usan\n- [Aditivos](/conceptos/aditivos/aditivo-alimentario) · [Etiquetado](/etiquetado)\n\n## Fuentes\n- Codex Alimentarius, lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔ URL oficial verificada 2026-09-28 (texto por leer)"
+  },
+  {
+    "path": "regulacion/normas/ue-reg-1169-2011",
+    "title": "Reglamento (UE) 1169/2011 — Información alimentaria al consumidor (UE)",
+    "description": "Etiquetado general y nutricional obligatorio en la UE; factores de energía; alérgenos",
+    "tags": [
+      "tipo-norma",
+      "jur-ue",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** UE · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Reglamento (UE) 1169/2011 — Información alimentaria al consumidor (UE)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Parlamento Europeo y Consejo / Comisión Europea |\n| Tipo | Reglamento (obligatorio en todos los Estados miembros) |\n| Versión | Consultar la versión consolidada vigente |\n\n## Resumen\nRegula la información obligatoria (ingredientes, alérgenos destacados, declaración nutricional por 100 g/100 mL) ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Anexo II: alérgenos. Anexo III: menciones adicionales (p. ej. polioles). Anexo XIV: factores de energía ⚠.\n\n## Páginas de la Wiki que la usan\n- [Factores de Atwater](/conceptos/nutricion/factores-de-atwater) · [Ósmosis](/conceptos/quimica/osmosis)\n\n## Fuentes\n- EUR-Lex (ELI): https://eur-lex.europa.eu/eli/reg/2011/1169/oj ⚠ URL oficial (EUR-Lex bloquea la lectura automática; texto por leer manualmente)"
+  },
+  {
+    "path": "regulacion/normas/ue-reg-1333-2008",
+    "title": "Reglamento (CE) 1333/2008 — Aditivos alimentarios (UE)",
+    "description": "Lista de la UE de aditivos autorizados, condiciones de uso, etiquetado y advertencias",
+    "tags": [
+      "tipo-norma",
+      "jur-ue",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** UE · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Reglamento (CE) 1333/2008 — Aditivos alimentarios (UE)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Parlamento Europeo y Consejo / Comisión Europea |\n| Tipo | Reglamento (obligatorio en todos los Estados miembros) |\n| Versión | Consultar la versión consolidada vigente |\n\n## Resumen\nLista positiva de aditivos (anexo II) con condiciones de uso por categoría; requisitos de etiquetado; advertencia para ciertos colorantes (anexo V) ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Anexo II: aditivos por categoría de alimento. Anexo V: colorantes con advertencia ⚠.\n\n## Páginas de la Wiki que la usan\n- [Aditivo alimentario](/conceptos/aditivos/aditivo-alimentario) · [Colorantes](/ingredientes/categorias/colorantes)\n\n## Fuentes\n- EUR-Lex (ELI): https://eur-lex.europa.eu/eli/reg/2008/1333/oj ⚠ URL oficial (EUR-Lex bloquea la lectura automática; texto por leer manualmente)"
+  },
+  {
+    "path": "regulacion/normas/ue-reg-178-2002",
+    "title": "Reglamento (CE) 178/2002 — Legislación alimentaria general (UE)",
+    "description": "Principios generales de la legislación alimentaria de la UE, creación de la EFSA, sistema de alerta rápida",
+    "tags": [
+      "tipo-norma",
+      "jur-ue",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** UE · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Reglamento (CE) 178/2002 — Legislación alimentaria general (UE)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Parlamento Europeo y Consejo / Comisión Europea |\n| Tipo | Reglamento (obligatorio en todos los Estados miembros) |\n| Versión | Consultar la versión consolidada vigente |\n\n## Resumen\nEstablece los principios de análisis de riesgos, precaución, trazabilidad y responsabilidad de los operadores; crea la EFSA.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Arts. 6–7: análisis de riesgos y principio de precaución ⚠.\n\n## Páginas de la Wiki que la usan\n- [Análisis de riesgos](/regulacion/conceptos/analisis-de-riesgos) · [EFSA](/regulacion/organismos/efsa)\n\n## Fuentes\n- EUR-Lex (ELI): https://eur-lex.europa.eu/eli/reg/2002/178/oj ⚠ URL oficial (EUR-Lex bloquea la lectura automática; texto por leer manualmente)"
+  },
+  {
+    "path": "regulacion/normas/ue-reg-1924-2006",
+    "title": "Reglamento (CE) 1924/2006 — Declaraciones nutricionales y de propiedades saludables (UE)",
+    "description": "Condiciones de las declaraciones nutricionales y de salud en la UE; registro de declaraciones autorizadas",
+    "tags": [
+      "tipo-norma",
+      "jur-ue",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** UE · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Reglamento (CE) 1924/2006 — Declaraciones nutricionales y de propiedades saludables (UE)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Parlamento Europeo y Consejo / Comisión Europea |\n| Tipo | Reglamento (obligatorio en todos los Estados miembros) |\n| Versión | Consultar la versión consolidada vigente |\n\n## Resumen\nSolo se permiten declaraciones de salud autorizadas tras evaluación de la EFSA; las nutricionales tienen condiciones definidas ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Anexo: declaraciones nutricionales y condiciones ⚠.\n\n## Páginas de la Wiki que la usan\n- [Declaraciones](/etiquetado/declaraciones)\n\n## Fuentes\n- EUR-Lex (ELI): https://eur-lex.europa.eu/eli/reg/2006/1924/oj ⚠ URL oficial (EUR-Lex bloquea la lectura automática; texto por leer manualmente)"
+  },
+  {
+    "path": "regulacion/normas/ue-reg-2022-63",
+    "title": "Reglamento (UE) 2022/63 — Retirada del dióxido de titanio (E171)",
+    "description": "Modifica el Reglamento 1333/2008 para retirar la autorización del E171",
+    "tags": [
+      "tipo-norma",
+      "jur-ue",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** UE · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# Reglamento (UE) 2022/63 — Retirada del dióxido de titanio (E171)\n\n| Campo | Valor |\n|---|---|\n| Emisor | Parlamento Europeo y Consejo / Comisión Europea |\n| Tipo | Reglamento (obligatorio en todos los Estados miembros) |\n| Versión | Consultar la versión consolidada vigente |\n\n## Resumen\nRetira el dióxido de titanio de la lista de aditivos autorizados tras la opinión de la EFSA de 2021 ⚠.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n—\n\n## Páginas de la Wiki que la usan\n- [Colorantes](/ingredientes/categorias/colorantes) · [Comparación E171](/regulacion/comparaciones/dioxido-de-titanio)\n\n## Fuentes\n- EUR-Lex (ELI): https://eur-lex.europa.eu/eli/reg/2022/63/oj ⚠ URL oficial (EUR-Lex bloquea la lectura automática; texto por leer manualmente)"
+  },
+  {
+    "path": "regulacion/normas/us-cfr-21-101",
+    "title": "21 CFR Part 101 — Etiquetado de alimentos (EE. UU.)",
+    "description": "Reglas de la FDA sobre etiquetado, incluida la tabla Nutrition Facts y las declaraciones",
+    "tags": [
+      "tipo-norma",
+      "jur-us",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** US · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# 21 CFR Part 101 — Etiquetado de alimentos (EE. UU.)\n\n| Campo | Valor |\n|---|---|\n| Emisor | FDA |\n| Tipo | Regulación federal (Code of Federal Regulations) |\n| Versión | eCFR (actualizado continuamente) |\n\n## Resumen\nRequisitos de etiquetado de alimentos en EE. UU.: ingredientes, Nutrition Facts, declaraciones nutricionales y de salud.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar en el eCFR la versión actual.\n\n## Páginas de la Wiki que la usan\n- [GRAS](/regulacion/conceptos/gras) · [Aditivo alimentario](/conceptos/aditivos/aditivo-alimentario)\n\n## Fuentes\n- https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101 ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/normas/us-cfr-21-170",
+    "title": "21 CFR Parts 170–189 — Aditivos alimentarios y GRAS (EE. UU.)",
+    "description": "Marco de la FDA para aditivos alimentarios, sustancias GRAS y sustancias prohibidas",
+    "tags": [
+      "tipo-norma",
+      "jur-us",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** norma · **Jurisdicción:** US · **Estado:** borrador\n> **Consultada:** 2026-09-28 · **Próxima revisión:** 2026-12-28 (normas: cada 3 meses)\n{.is-info}\n\n# 21 CFR Parts 170–189 — Aditivos alimentarios y GRAS (EE. UU.)\n\n| Campo | Valor |\n|---|---|\n| Emisor | FDA |\n| Tipo | Regulación federal (Code of Federal Regulations) |\n| Versión | eCFR (actualizado continuamente) |\n\n## Resumen\nProcedimientos y listas de aditivos, sustancias GRAS afirmadas y sustancias prohibidas en alimentos.\n\n## Artículos clave (resumen propio; consultar el texto oficial)\n- Consultar en el eCFR la versión actual.\n\n## Páginas de la Wiki que la usan\n- [GRAS](/regulacion/conceptos/gras) · [Aditivo alimentario](/conceptos/aditivos/aditivo-alimentario)\n\n## Fuentes\n- https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-170 ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/codex",
+    "title": "Codex Alimentarius",
+    "description": "Comisión conjunta FAO/OMS que elabora normas alimentarias internacionales (estándares, guías, códigos de práctica)",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# Codex Alimentarius\n\n## Qué es y mandato\nPrograma conjunto de la FAO y la OMS, creado en 1963, que elabora normas alimentarias internacionales para proteger la salud de los consumidores y asegurar prácticas equitativas en el comercio. Sus normas son voluntarias, pero la Organización Mundial del Comercio las toma como referencia.\n\n## Qué produce\n- Normas generales (etiquetado CXS 1-1985; aditivos, GSFA CXS 192-1995; contaminantes CXS 193-1995).\n- Guías (etiquetado nutricional CXG 2-1985; declaraciones CXG 23-1997; INS CXG 36-1989).\n- Normas por producto, códigos de prácticas, límites máximos de residuos.\n\n## Cómo buscar\n- Lista de normas: https://www.fao.org/fao-who-codexalimentarius/codex-texts/list-standards/en/ ✔\n- GSFA Online (aditivos por categoría de alimento) ⚠ acceso manual.\n- Buscar por código (CXS, CXG, CXC) y descargar la última versión (verificar el año de revisión).\n\n## Relación con otros organismos\nRecibe las evaluaciones del [JECFA](/regulacion/organismos/jecfa); los países (incluida Colombia) pueden adoptarlas en su legislación.\n\n## Fuentes\n- Codex Alimentarius. https://www.fao.org/fao-who-codexalimentarius/es/ ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/comision-europea",
+    "title": "Comisión Europea (gestión del riesgo alimentario)",
+    "description": "Órgano ejecutivo de la UE que propone y adopta la legislación alimentaria y mantiene bases de datos de aditivos y declaraciones",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# Comisión Europea (gestión del riesgo alimentario)\n\n## Qué es y mandato\nInstitución de la UE que propone legislación y la aplica; en alimentos, gestiona el riesgo a partir de las opiniones de la EFSA.\n\n## Qué produce\n- Reglamentos (aditivos 1333/2008, información al consumidor 1169/2011, declaraciones 1924/2006, legislación general 178/2002).\n- **Base de datos de aditivos**, **registro de declaraciones de salud**.\n\n## Cómo buscar\n- Base de aditivos: https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/database_en ✔\n- Registro de declaraciones: https://food.ec.europa.eu/safety/labelling-and-nutrition/nutrition-and-health-claims/eu-register-health-claims_en ✔\n- Textos legales consolidados en EUR-Lex (buscar la versión consolidada más reciente).\n\n## Relación con otros organismos\nGestiona sobre la base de la [EFSA](/regulacion/organismos/efsa).\n\n## Fuentes\n- Comisión Europea. https://food.ec.europa.eu/food-safety/food-improvement-agents/additives/database_en ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/efsa",
+    "title": "EFSA (Autoridad Europea de Seguridad Alimentaria)",
+    "description": "Agencia de la UE que evalúa riesgos alimentarios: aditivos, nuevos alimentos, contaminantes, declaraciones de salud, valores de referencia",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# EFSA (Autoridad Europea de Seguridad Alimentaria)\n\n## Qué es y mandato\nAgencia de la Unión Europea que proporciona asesoramiento científico independiente sobre riesgos alimentarios (creada por el Reglamento (CE) 178/2002 ⚠).\n\n## Qué produce\n- Opiniones científicas en el **EFSA Journal** (reevaluación de aditivos, contaminantes, nuevos alimentos, declaraciones de salud).\n- Valores dietéticos de referencia (DRV Finder).\n- OpenFoodTox (datos toxicológicos).\n\n## Cómo buscar\n- Web: https://www.efsa.europa.eu/es ✔; buscar \"re-evaluation of [aditivo]\" en el EFSA Journal; leer el resumen (Abstract) y las conclusiones; revisar si hay una opinión más reciente.\n\n## Relación con otros organismos\nEvalúa; la [Comisión Europea](/regulacion/organismos/comision-europea) decide.\n\n## Fuentes\n- EFSA. https://www.efsa.europa.eu/es ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/fao",
+    "title": "FAO",
+    "description": "Organización de las Naciones Unidas para la Alimentación y la Agricultura",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# FAO\n\n## Qué es y mandato\nAgencia de la ONU dedicada a la alimentación, la agricultura y la seguridad alimentaria.\n\n## Qué produce\n- Informes técnicos de nutrición (p. ej. *Food and Nutrition Paper* 77 sobre energía de los alimentos y 92 sobre calidad proteica).\n- INFOODS (composición de alimentos), estadísticas (FAOSTAT).\n- Co-administra el Codex y el JECFA.\n\n## Cómo buscar\n- Repositorio: https://openknowledge.fao.org ✔ (buscar por título o código de documento).\n\n## Relación con otros organismos\nCon la [OMS](/regulacion/organismos/oms): Codex, JECFA, consultas de expertos.\n\n## Fuentes\n- FAO. Documento de ejemplo: https://www.fao.org/4/y5022e/y5022e00.htm ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/fda",
+    "title": "FDA (Administración de Alimentos y Medicamentos de EE. UU.)",
+    "description": "Agencia de EE. UU. que regula la mayoría de los alimentos (excepto carnes y aves): aditivos, GRAS, etiquetado, inocuidad",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# FDA (Administración de Alimentos y Medicamentos de EE. UU.)\n\n## Qué es y mandato\nAgencia del Departamento de Salud de EE. UU. responsable de la seguridad de la mayoría de los alimentos, cosméticos y medicamentos.\n\n## Qué produce\n- Regulaciones en el título 21 del CFR (etiquetado Part 101; aditivos Parts 170–189).\n- Inventarios: Substances Added to Food, GRAS Notices.\n- *Bad Bug Book* (patógenos), guías para la industria.\n\n## Cómo buscar\n- https://www.fda.gov/food ✔; eCFR para el texto legal: https://www.ecfr.gov ✔\n\n## Relación con otros organismos\nEl [USDA](/regulacion/organismos/usda) regula carnes, aves y huevos procesados.\n\n## Fuentes\n- FDA. https://www.fda.gov/food ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/iarc",
+    "title": "IARC (Agencia Internacional de Investigación sobre el Cáncer)",
+    "description": "Agencia de la OMS que identifica peligros cancerígenos (grupos 1, 2A, 2B, 3) en sus Monografías",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# IARC (Agencia Internacional de Investigación sobre el Cáncer)\n\n## Qué es y mandato\nAgencia especializada de la OMS en investigación sobre el cáncer.\n\n## Qué produce\n- **Monografías:** clasificación de agentes según la fuerza de la evidencia de que pueden causar cáncer ([Clasificación IARC](/conceptos/toxicologia/clasificacion-iarc)).\n- Resúmenes en *Lancet Oncology* tras cada reunión.\n\n## Cómo buscar\n- Monografías y lista de agentes clasificados: https://monographs.iarc.who.int/ ✔\n\n## Relación con otros organismos\nIdentifica **peligros**; la evaluación del **riesgo** a exposiciones reales la hacen el [JECFA](/regulacion/organismos/jecfa) y la [EFSA](/regulacion/organismos/efsa).\n\n## Fuentes\n- IARC. https://monographs.iarc.who.int/ ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/icbf",
+    "title": "ICBF (Colombia)",
+    "description": "Instituto Colombiano de Bienestar Familiar: guías alimentarias (GABA), tabla de composición de alimentos colombianos y encuestas nutricionales",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# ICBF (Colombia)\n\n## Qué es y mandato\nEntidad del Estado colombiano dedicada a la protección de la niñez y la familia; en nutrición, responsable de guías y datos.\n\n## Qué produce\n- **GABA:** Guías Alimentarias Basadas en Alimentos para la población colombiana ⚠ (edición vigente por verificar).\n- **Tabla de Composición de Alimentos Colombianos** ⚠.\n- ENSIN (Encuesta Nacional de Situación Nutricional, con otras entidades) ⚠.\n\n## Cómo buscar\n- Web del ICBF (no respondió a la verificación automática ⚠; consultar manualmente).\n\n## Relación con otros organismos\nComplementa al [MinSalud](/regulacion/organismos/minsalud).\n\n## Fuentes\n- ICBF. https://www.icbf.gov.co/ ⚠ no verificable automáticamente (2026-09-28)"
+  },
+  {
+    "path": "regulacion/organismos/invima",
+    "title": "INVIMA (Colombia)",
+    "description": "Instituto Nacional de Vigilancia de Medicamentos y Alimentos: registros sanitarios, inspección, vigilancia y control",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# INVIMA (Colombia)\n\n## Qué es y mandato\nAutoridad sanitaria nacional de Colombia encargada de la inspección, vigilancia y control de alimentos, medicamentos y otros productos, y de expedir registros, permisos y notificaciones sanitarias.\n\n## Qué produce\n- Registros sanitarios (NSA/PSA/RSA) ([Registro sanitario](/regulacion/conceptos/registro-sanitario)).\n- Vigilancia, alertas sanitarias, inspección de plantas.\n- **Normograma** con textos compilados de la normativa.\n\n## Cómo buscar\n- Web: https://www.invima.gov.co/ ✔\n- Normograma: https://normograma.invima.gov.co ✔ (leer notas de vigencia).\n- Consulta de registros sanitarios en su web.\n\n## Relación con otros organismos\nAplica las normas del [MinSalud](/regulacion/organismos/minsalud).\n\n## Fuentes\n- INVIMA. https://www.invima.gov.co/ ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/jecfa",
+    "title": "JECFA",
+    "description": "Comité Mixto FAO/OMS de Expertos en Aditivos Alimentarios: evalúa el riesgo de aditivos, contaminantes, toxinas naturales y residuos de medicamentos veterinarios",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# JECFA\n\n## Qué es y mandato\nComité científico internacional de expertos independientes, administrado por la FAO y la OMS, que evalúa la seguridad de aditivos, contaminantes, toxinas naturales y residuos de medicamentos veterinarios.\n\n## Qué produce\n- **IDA** de aditivos y especificaciones de identidad y pureza.\n- Ingestas tolerables de contaminantes.\n- Monografías toxicológicas e informes de cada reunión (WHO Technical Report Series).\n\n## Cómo buscar\n- Base de datos de evaluaciones: https://apps.who.int/food-additives-contaminants-jecfa-database/ ✔ — buscar por nombre o INS; leer la evaluación más reciente.\n\n## Relación con otros organismos\nAsesora al [Codex](/regulacion/organismos/codex). Distinto de la [IARC](/regulacion/organismos/iarc), que identifica peligros de cáncer.\n\n## Fuentes\n- OMS. JECFA. https://www.who.int/groups/joint-fao-who-expert-committee-on-food-additives-(jecfa) ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/minsalud",
+    "title": "Ministerio de Salud y Protección Social (Colombia)",
+    "description": "Emite las resoluciones y reglamentos técnicos de alimentos (etiquetado, requisitos sanitarios, recomendaciones de ingesta)",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# Ministerio de Salud y Protección Social (Colombia)\n\n## Qué es y mandato\nMinisterio rector de la política de salud en Colombia; expide los reglamentos técnicos sanitarios de alimentos.\n\n## Qué produce\n- Resoluciones: 5109/2005 (rotulado), 2674/2013 (requisitos sanitarios), 3803/2016 (RIEN), 810/2021 y modificatorias (etiquetado nutricional y frontal), 2066/2024 (grasas trans).\n- Documentos técnicos y ABECÉ explicativos.\n\n## Cómo buscar\n- Web: https://www.minsalud.gov.co/ ✔ (sección de normatividad); textos compilados más fiables en el normograma del INVIMA.\n\n## Relación con otros organismos\nGestiona el riesgo en Colombia; el [INVIMA](/regulacion/organismos/invima) vigila.\n\n## Fuentes\n- MinSalud. https://www.minsalud.gov.co/ ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/oms",
+    "title": "OMS (Organización Mundial de la Salud)",
+    "description": "Agencia de la ONU para la salud: guías de nutrición, IARC, co-administración del Codex y del JECFA",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# OMS (Organización Mundial de la Salud)\n\n## Qué es y mandato\nAgencia de la ONU para la salud pública internacional.\n\n## Qué produce\n- **Guías de nutrición** basadas en revisiones sistemáticas y GRADE: azúcares (2015), sodio (2012), edulcorantes no calóricos (2023), grasas saturadas y trans (2023).\n- Notas descriptivas (alimentación sana, inocuidad, micotoxinas, anemia).\n- A través de la [IARC](/regulacion/organismos/iarc), clasificación de carcinógenos.\n\n## Cómo buscar\n- Publicaciones: https://www.who.int/publications ✔ — buscar el título de la guía; leer el resumen de recomendaciones y la certeza de la evidencia.\n\n## Relación con otros organismos\nCon la [FAO](/regulacion/organismos/fao): Codex y JECFA.\n\n## Fuentes\n- OMS. *Guideline: Sugars intake for adults and children.* https://www.who.int/publications/i/item/9789241549028 ✔ URL verificada 2026-09-28"
+  },
+  {
+    "path": "regulacion/organismos/usda",
+    "title": "USDA (Departamento de Agricultura de EE. UU.)",
+    "description": "Regula carnes, aves y ovoproductos (FSIS); mantiene FoodData Central; co-publica las Guías Alimentarias de EE. UU.",
+    "tags": [
+      "tipo-organismo",
+      "area-regulacion",
+      "mod-m20",
+      "estado-borrador"
+    ],
+    "body": "> **Tipo:** organismo · **Módulo:** M20 · **Estado:** borrador · **Consultado:** 2026-09-28\n{.is-info}\n\n# USDA (Departamento de Agricultura de EE. UU.)\n\n## Qué es y mandato\nDepartamento de Agricultura de EE. UU.\n\n## Qué produce\n- **FoodData Central:** base de datos de composición de alimentos.\n- FSIS: inocuidad de carnes y aves.\n- Guías Alimentarias para Estadounidenses (con HHS).\n\n## Cómo buscar\n- FoodData Central: https://fdc.nal.usda.gov/ ✔ — buscar el alimento; preferir los tipos de datos \"Foundation\" o \"SR Legacy\" para alimentos básicos.\n\n## Relación con otros organismos\nComplementa a la [FDA](/regulacion/organismos/fda).\n\n## Fuentes\n- USDA. FoodData Central. https://fdc.nal.usda.gov/ ✔ URL verificada 2026-09-28"
+  }
+]
